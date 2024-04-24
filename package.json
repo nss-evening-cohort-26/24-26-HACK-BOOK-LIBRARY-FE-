@@ -1,8 +1,8 @@
 {
-  "name": "next-firebase-starter",
+  "name": "24-26-Hack-Book-Library",
   "private": true,
   "version": "1.0.0",
-  "author": "Derek Swann",
+  "author": "Cohort 24 and 26",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
