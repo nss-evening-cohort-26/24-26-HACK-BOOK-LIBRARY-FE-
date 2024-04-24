@@ -1,0 +1,91 @@
+{
+  "-Nw7dL76OoHGl3MeKbNx": {
+    "firebaseKey":"-Nw7dL76OoHGl3MeKbNx",
+    "title": "Trail Beyond, The",
+    "bookCover": "http://dummyimage.com/213x100.png/cc0000/ffffff",
+    "publishYear": 2001,
+    "authorId": "-Nw7fcCeCE6iJDLsTO3m",
+    "genreId": "-Nw7e7wYiU44fkx2R94G"
+  },
+
+  "-Nw7dL771lOV9Gjrz_NI": {
+    "firebaseKey":"-Nw7dL771lOV9Gjrz_NI",
+    "title": "Questo piccolo grande amore",
+    "bookCover": "http://dummyimage.com/225x100.png/5fa2dd/ffffff",
+    "publishYear": 2011,
+    "authorId": "-Nw7fcCeCE6iJDLsTO3m",
+    "genreId": "-Nw7e7wYiU44fkx2R94H"
+  },
+
+  "-Nw7dL78e-deAloEoKhY": {
+    "firebaseKey":"-Nw7dL78e-deAloEoKhY",
+    "title": "Flintstones, The",
+    "bookCover": "http://dummyimage.com/113x100.png/ff4444/ffffff",
+    "publishYear": 2001,
+    "authorId": "-Nw7fcCf0l0wXUljHDvs",
+    "genreId": "-Nw7e7wYiU44fkx2R94I"
+  },
+
+  "-Nw7dL79vdGZylJAplia": {
+    "firebaseKey":"-Nw7dL79vdGZylJAplia",
+    "title": "'Human' Factor, The (Human Factor, The)",
+    "bookCover": "http://dummyimage.com/200x100.png/5fa2dd/ffffff",
+    "publishYear": 2000,
+    "authorId": "-Nw7fcCgqijU7et9a0T7",
+    "genreId": "-Nw7e7wYiU44fkx2R94J"
+  },
+
+  "-Nw7dL79vdGZylJAplib": {
+    "firebaseKey":"-Nw7dL79vdGZylJAplib",
+    "title": "Warriors (Guerreros)",
+    "bookCover": "http://dummyimage.com/199x100.png/ff4444/ffffff",
+    "publishYear": 2002,
+    "authorId": "-Nw7fcChZWA3nJH33BGN",
+    "genreId": "-Nw7e7wZ6BkvBsBt938w"
+  },
+
+  "-Nw7dL7AyGJUoZRtX3Uu": {
+    "firebaseKey":"-Nw7dL7AyGJUoZRtX3Uu",
+    "title": "Point and Shoot",
+    "bookCover": "http://dummyimage.com/113x100.png/dddddd/000000",
+    "publishYear": 1994,
+    "authorId": "-Nw7fcCgqijU7et9a0T7",
+    "genreId": "-Nw7e7wZ6BkvBsBt938x"
+  },
+
+  "-Nw7dL7BIMM3-QiFxa6f": {
+    "firebaseKey":"-Nw7dL7BIMM3-QiFxa6f",
+    "title": "Iceman, The",
+    "bookCover": "http://dummyimage.com/120x100.png/ff4444/ffffff",
+    "publishYear": 1993,
+    "authorId": "-Nw7fcChZWA3nJH33BGN",
+    "genreId": "-Nw7e7wZ6BkvBsBt938y"
+  },
+
+  "-Nw7dL7BIMM3-QiFxa6g": {
+    "firebaseKey":"-Nw7dL7BIMM3-QiFxa6g",
+    "title": "Love and Anarchy (Film d'amore e d'anarchia, ovvero 'stamattina alle 10 in via dei Fiori nella nota casa di tolleranza...')",
+    "bookCover": "http://dummyimage.com/109x100.png/5fa2dd/ffffff",
+    "publishYear": 2010,
+    "authorId": "-Nw7fcCeCE6iJDLsTO3m",
+    "genreId": "-Nw7e7wZ6BkvBsBt938z"
+  },
+
+  "-Nw7dL7C59UpVZNTpgVy": {
+    "firebaseKey":"-Nw7dL7C59UpVZNTpgVy",
+    "title": "Running Out of Time (Am zin)",
+    "bookCover": "http://dummyimage.com/211x100.png/cc0000/ffffff",
+    "publishYear": 1997,
+    "authorId": "-Nw7fcChZWA3nJH33BGN",
+    "genreId": "-Nw7e7w_7RWvCuldfTAK"
+  },
+
+  "-Nw7dL7C59UpVZNTpgVz": {
+    "firebaseKey":"-Nw7dL7C59UpVZNTpgVz",
+    "title": "Come Back, Little Sheba",
+    "bookCover": "http://dummyimage.com/116x100.png/dddddd/000000",
+    "publishYear": 2007,
+    "authorId": "-Nw7fcCf0l0wXUljHDvr",
+    "genreId": "-Nw7e7w_7RWvCuldfTAL"
+  }
+}
