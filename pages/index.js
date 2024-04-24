@@ -1,9 +1,7 @@
-import { Button } from 'react-bootstrap';
-import { signOut } from '../utils/auth';
-// import { useAuth } from '../utils/context/authContext';
+import { useAuth } from '../utils/context/authContext';
 
 function Home() {
-//  const { user } = useAuth();
+  const { user } = useAuth();
   return (
     <div
       className="text-center d-flex flex-column justify-content-center align-content-center"
@@ -14,11 +12,9 @@ function Home() {
         margin: '0 auto',
       }}
     >
-      <h1>Hello ! </h1>
-      <p>Click the button below to logout!</p>
-      <Button variant="danger" type="button" size="lg" className="copy-btn" onClick={signOut}>
-        Sign Out
-      </Button>
+      <h1>welcome  {user.displayName} to your Bookshelf~ </h1>
+      <p>Book cards will go here.</p>
+
     </div>
   );
 }
