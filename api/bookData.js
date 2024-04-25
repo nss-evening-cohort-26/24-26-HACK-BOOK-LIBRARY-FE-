@@ -16,8 +16,8 @@ const getBooks = () => new Promise((resolve, reject) => {
 });
 
 // DELETE BOOK (NOT USERS! ADMINS ONLY)
-const deleteBook = () => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/books/{id}`, {
+const deleteBook = (id) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/books/${id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
@@ -29,8 +29,8 @@ const deleteBook = () => new Promise((resolve, reject) => {
 });
 
 // GET SINGLE BOOK
-const getSingleBook = () => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/books/{id}`, {
+const getSingleBook = (id) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/books/${id}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -56,8 +56,8 @@ const createBook = (payload) => new Promise((resolve, reject) => {
 });
 
 // UPDATE BOOK
-const updateBook = (payload) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/books/{id}`, {
+const updateBook = (payload, id) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/books/${id}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
@@ -84,8 +84,8 @@ const addUserBook = (payload) => new Promise((resolve, reject) => {
 });
 
 // REMOVE A BOOK FROM USER BOOKSHELF BUT NOT FROM LIBRARY
-const deleteUserBook = () => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/books/{bookId}/{userId}`, {
+const deleteUserBook = (userId) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/books/{bookId}/${userId}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
