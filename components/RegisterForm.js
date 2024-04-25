@@ -3,14 +3,15 @@ import { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useRouter } from 'next/router';
-import { registerUser } from '../utils/auth'; // Update with path to registerUser
+import { registerUser } from '../utils/auth';
 import { useAuth } from '../utils/context/authContext';
-import updateUser from '../api/userData';
+import { updateUser } from '../api/userData';
 
 function RegisterForm({ userObj }) {
   const router = useRouter();
   const { user } = useAuth();
   const [formData, setFormData] = useState({
+    id: userObj.id,
     uid: user.uid,
     userName: '',
     email: '',
@@ -21,17 +22,16 @@ function RegisterForm({ userObj }) {
     if (userObj?.id) {
       setFormData(userObj);
     }
-    console.warn(user.uid);
   }, [userObj, user]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (userObj.id) {
-      updateUser(formData).then(() => router.push(`/users/${userObj.id}`));
+      updateUser(formData).then(() => router.push(`/user/${userObj.id}`));
     } else {
       const payload = { ...formData, uid: user?.uid };
       registerUser(payload).then((response) => {
-        router.push(`/users/${response.id}`);
+        router.push(`/user/${response.id}`);
       });
     }
   };
@@ -58,7 +58,7 @@ function RegisterForm({ userObj }) {
           <Form.Control as="textarea" name="bio" value={formData.bio} placeholder="Enter your bio" onChange={handleChange} required />
         </Form.Group>
         <Button variant="primary" type="submit">
-          Submit
+          {userObj.id ? 'Update' : 'Create'}
         </Button>
       </Form>
     </div>
