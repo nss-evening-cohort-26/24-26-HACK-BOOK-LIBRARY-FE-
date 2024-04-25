@@ -56,9 +56,9 @@ const createBook = (payload) => new Promise((resolve, reject) => {
 });
 
 // UPDATE BOOK
-const updateBook = (payload, id) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/books/${id}`, {
-    method: 'PATCH',
+const updateBook = (payload) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/books/${payload.id}`, {
+    method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
     },
