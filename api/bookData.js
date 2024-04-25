@@ -56,9 +56,9 @@ const createBook = (payload) => new Promise((resolve, reject) => {
 });
 
 // UPDATE BOOK
-const updateBook = (payload, id) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/books/${id}`, {
-    method: 'PATCH',
+const updateBook = (payload) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/books/${payload.id}`, {
+    method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
     },
@@ -84,8 +84,8 @@ const addUserBook = (payload) => new Promise((resolve, reject) => {
 });
 
 // REMOVE A BOOK FROM USER BOOKSHELF BUT NOT FROM LIBRARY
-const deleteUserBook = (userId) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/books/{bookId}/${userId}`, {
+const deleteUserBook = (bookId, userId) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/books/${bookId}/${userId}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
