@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Link from 'next/link';
 
-function BookCard({ bookObj, onClick }) {
+function BookCard({ bookObj, deleteBook }) {
   return (
     <Card style={{ width: '18rem', margin: '10px' }}>
       <Card.Img variant="top" src={bookObj.bookCover} alt={bookObj.title} style={{ height: '400px' }} />
@@ -17,7 +17,7 @@ function BookCard({ bookObj, onClick }) {
         <Link href={`/book/edit/${bookObj.id}`} passHref>
           <Button variant="info">EDIT</Button>
         </Link>
-        <Button variant="danger" onClick={onClick} className="m-2">
+        <Button variant="danger" onClick={() => deleteBook(bookObj)} className="m-2">
           DELETE
         </Button>
       </Card.Body>
@@ -29,9 +29,9 @@ BookCard.propTypes = {
   bookObj: PropTypes.shape({
     bookCover: PropTypes.string,
     title: PropTypes.string,
-    id: PropTypes.string,
+    id: PropTypes.number,
   }).isRequired,
-  onClick: PropTypes.func.isRequired,
+  deleteBook: PropTypes.func.isRequired,
 };
 
 export default BookCard;

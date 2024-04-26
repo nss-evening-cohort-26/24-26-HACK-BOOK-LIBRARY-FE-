@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from 'react-bootstrap';
 import BookCard from '../components/BookCard';
-import { getBooks } from '../api/bookData';
+import { getBooks, deleteBook } from '../api/bookData';
 
 export default function Library() {
   const [books, setBooks] = useState([]);
@@ -15,11 +15,11 @@ export default function Library() {
     getAllTheBooks();
   }, []);
 
-  // const deleteThisLibraryBook = ({ bookObj }) => {
-  //   if (window.confirm(`Delete ${bookObj.title}?`)) {
-  //     deleteBook(bookObj.firebaseKey).then(() => getAllTheBooks());
-  //   }
-  // };
+  const deleteThisLibraryBook = (bookObj) => {
+    if (window.confirm(`Delete ${bookObj.title}?`)) {
+      deleteBook(bookObj.id).then(() => getAllTheBooks());
+    }
+  };
 
   return (
     <>
@@ -28,7 +28,7 @@ export default function Library() {
       <Button>Add Author</Button>
       <div className="d-flex flex-wrap">
         {books.map((book) => (
-          <BookCard key={book.id} bookObj={book} onUpdate={getAllTheBooks} />
+          <BookCard key={book.id} bookObj={book} onUpdate={getAllTheBooks} deleteBook={deleteThisLibraryBook} />
         ))}
       </div>
     </>
