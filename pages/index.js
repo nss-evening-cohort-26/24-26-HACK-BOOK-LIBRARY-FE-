@@ -1,7 +1,15 @@
+import RegisterForm from '../components/RegisterForm';
 import { useAuth } from '../utils/context/authContext';
 
 function Home() {
   const { user } = useAuth();
+  const isUser = user?.Uid;
+
+  if (!isUser) {
+    return (
+      <RegisterForm />
+    );
+  }
 
   return (
     <div
