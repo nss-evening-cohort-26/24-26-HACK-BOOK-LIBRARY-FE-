@@ -29,7 +29,7 @@ export default function Library() {
       <Button>Add Author</Button>
       <div className="d-flex flex-wrap">
         {books.map((book) => (
-          <BookCard key={book.id} bookObj={book} onUpdate={getAllTheBooks} deleteBook={deleteThisLibraryBook} />
+          <BookCard key={book.id} bookObj={book} onUpdate={getAllTheBooks} deleteBook={deleteThisLibraryBook} location="library" />
         ))}
       </div>
     </>

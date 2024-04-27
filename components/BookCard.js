@@ -4,8 +4,22 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Link from 'next/link';
 import { addUserBook } from '../api/bookData';
+import { useAuth } from '../utils/context/authContext';
 
 function BookCard({ bookObj, deleteBook, location }) {
+  console.warn(bookObj);
+
+  const { user } = useAuth();
+
+  const addThisBookToBookshelf = () => {
+    const payload = {
+      bookId: bookObj.id,
+      userId: user.id,
+    };
+    console.warn(payload);
+    addUserBook(payload);
+  };
+
   return (
     <Card style={{ width: '18rem', margin: '10px' }}>
       <Card.Img variant="top" src={bookObj.bookCover} alt={bookObj.title} style={{ height: '400px' }} />
@@ -21,7 +35,7 @@ function BookCard({ bookObj, deleteBook, location }) {
         <Button variant="danger" onClick={() => deleteBook(bookObj)} className="m-2">
           DELETE
         </Button>
-        `{location === 'library' ? <Button variant="success" onClick={() => addUserBook(bookObj)} className="m-2">Add to Bookshelf</Button> : ''}`
+        {location === 'library' ? <Button variant="success" onClick={addThisBookToBookshelf} className="m-2">Add to Bookshelf</Button> : '' }
       </Card.Body>
     </Card>
   );

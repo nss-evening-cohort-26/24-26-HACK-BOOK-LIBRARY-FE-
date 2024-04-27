@@ -20,9 +20,10 @@ function Home() {
         padding: '30px',
         maxWidth: '400px',
         margin: '0 auto',
+        color: 'whitesmoke',
       }}
     >
-      <h1>welcome  {user.userName} to your Bookshelf~ </h1>
+      <h1>Welcome  {user.userName} to Your Bookshelf!</h1>
       <UserBookCard />
 
     </div>

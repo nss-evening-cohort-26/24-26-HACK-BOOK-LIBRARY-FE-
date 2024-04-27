@@ -9,17 +9,17 @@ function UserBookCard() {
   const { user } = useAuth();
 
   const getAllUserBooks = () => {
-    getUserBooks(user.Id).then(setBooks);
-    console.warn(user.Id);
+    getUserBooks(user.id).then(setBooks);
+    console.warn(user.id);
   };
 
   useEffect(() => {
     getAllUserBooks();
   }, []);
 
-  const deleteThisUserBook = ({ bookObj }) => {
-    if (window.confirm(`Delete ${bookObj.Title}?`)) {
-      deleteUserBook(bookObj.Id).then(() => getAllUserBooks());
+  const deleteThisUserBook = (bookObj) => {
+    if (window.confirm(`Delete ${bookObj.title}?`)) {
+      deleteUserBook(bookObj.id, user.id).then(() => getAllUserBooks());
     }
   };
 
@@ -27,7 +27,7 @@ function UserBookCard() {
     <>
       <div className="d-flex flex-wrap">
         {books.map((book) => (
-          <BookCard key={book.Id} bookObj={book} onUpdate={getAllUserBooks} onClick={deleteThisUserBook} />
+          <BookCard key={book.id} bookObj={book} onUpdate={getAllUserBooks} deleteBook={() => deleteThisUserBook(book)} location="bookshelf" />
         ))}
       </div>
 
