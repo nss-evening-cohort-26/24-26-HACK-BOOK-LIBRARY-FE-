@@ -24,14 +24,11 @@ function UserBookCard() {
   };
 
   return (
-    <>
-      <div className="d-flex flex-wrap">
-        {books.map((book) => (
-          <BookCard key={book.id} bookObj={book} onUpdate={getAllUserBooks} deleteBook={() => deleteThisUserBook(book)} location="bookshelf" />
-        ))}
-      </div>
-
-    </>
+    <div className="d-flex flex-wrap">
+      {books.map((book) => (
+        <BookCard key={book.id} bookObj={book} onUpdate={getAllUserBooks} deleteBook={() => deleteThisUserBook(book)} location="bookshelf" />
+      ))}
+    </div>
   );
 }
 
