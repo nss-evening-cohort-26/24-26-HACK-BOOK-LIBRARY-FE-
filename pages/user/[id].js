@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { getSingleUser } from '../../api/userData';
 import UserCard from '../../components/UserCard';
+import UserBookCard from '../../components/UserBookCard';
 
 export default function ViewUserBookShelf() {
   const [userInfo, setUserInfo] = useState({});
@@ -28,7 +29,8 @@ export default function ViewUserBookShelf() {
         }}
       />
       <div className="container">
-        <h2>Books</h2>
+        <h2 style={{ color: 'white' }}>Books</h2>
+        <UserBookCard />
         <br /><br />
       </div>
     </>
