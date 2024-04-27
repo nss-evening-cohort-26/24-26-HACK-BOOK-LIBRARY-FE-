@@ -29,9 +29,6 @@ export default function NavBar() {
             <Link passHref href="/library">
               <Nav.Link>Library</Nav.Link>
             </Link>
-            <Link passHref href="/user/new">
-              <Nav.Link>Register User</Nav.Link>
-            </Link>
             <Link passHref href={`/user/${user?.id}`}>
               <Nav.Link>User Bookshelf</Nav.Link>
             </Link>
