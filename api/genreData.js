@@ -20,4 +20,4 @@ const getGenres = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-export default getOrderTypes;
+export default getGenres;
