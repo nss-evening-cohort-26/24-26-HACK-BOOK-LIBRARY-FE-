@@ -15,7 +15,7 @@ export default function CommentForm() {
           value={formInput.content}
         />
       </Form.Group>
-      <Button className="form-button button" type="submit">TO CHANGE</Button>
+      <Button className="form-button button" type="submit">Add Comment</Button>
     </Form>
   );
 }
