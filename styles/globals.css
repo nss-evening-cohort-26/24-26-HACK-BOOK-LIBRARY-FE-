@@ -24,3 +24,13 @@ body {
 .text {
   color: aliceblue;
 }
+
+.user-container {
+  display: flex;
+}
+
+.user-card {
+  background-color: black;
+  color: grey;
+  border-color: grey;
+}
