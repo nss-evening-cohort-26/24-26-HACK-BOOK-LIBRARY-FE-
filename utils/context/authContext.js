@@ -36,11 +36,10 @@ const AuthProvider = (props) => {
         setOAuthUser(fbUser);
         checkUser(fbUser.uid).then((gamerInfo) => {
           let userObj = {};
-          if ('null' in gamerInfo) {
-            userObj = gamerInfo;
+          if (gamerInfo && typeof gamerInfo === 'object' && 'null' in gamerInfo) {
+            userObj = { ...gamerInfo, uid: fbUser.uid };
           } else {
-            userObj = gamerInfo;
-            userObj.uid = fbUser.uid;
+            userObj = { ...gamerInfo, uid: fbUser.uid };
           }
           setUser(userObj);
         });
@@ -48,7 +47,7 @@ const AuthProvider = (props) => {
         setOAuthUser(false);
         setUser(false);
       }
-    }); // creates a single global listener for auth state changed
+    });
   }, []);
 
   const value = useMemo(
