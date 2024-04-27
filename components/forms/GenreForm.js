@@ -19,7 +19,7 @@ export default function GenreForm() {
          // onChange={handleChange}
         />
       </Form.Group>
-      <Button className="form-button button" type="submit">TO CHANGE</Button>
+      <Button className="form-button button" type="submit">Add Genre</Button>
     </Form>
   );
 }
