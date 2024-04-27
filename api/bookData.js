@@ -69,6 +69,19 @@ const updateBook = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+// GET USER BOOKS
+const getUserBooks = (userId) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/bookuser/${userId}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(Object.values(data)))
+    .catch(reject);
+});
+
 // ADD A BOOK TO USER BOOKSHELF
 const addUserBook = (payload) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/books/addToShelf`, {
@@ -102,6 +115,7 @@ export {
   deleteBook,
   getSingleBook,
   updateBook,
+  getUserBooks,
   addUserBook,
   deleteUserBook,
 };

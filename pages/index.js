@@ -1,3 +1,4 @@
+import UserBookCard from '../components/UserBookCard';
 import { useAuth } from '../utils/context/authContext';
 
 function Home() {
@@ -13,8 +14,8 @@ function Home() {
         margin: '0 auto',
       }}
     >
-      <h1>welcome  {user.displayName} to your Bookshelf~ </h1>
-      <p>Book cards will go here.</p>
+      <h1>welcome  {user.userName} to your Bookshelf~ </h1>
+      <UserBookCard />
 
     </div>
   );
