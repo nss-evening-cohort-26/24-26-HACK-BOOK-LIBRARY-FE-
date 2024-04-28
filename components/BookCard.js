@@ -7,7 +7,7 @@ import { addUserBook } from '../api/bookData';
 import { useAuth } from '../utils/context/authContext';
 
 function BookCard({ bookObj, deleteBook, location }) {
-  console.warn(bookObj);
+  // console.warn(bookObj);
 
   const { user } = useAuth();
 
@@ -16,7 +16,7 @@ function BookCard({ bookObj, deleteBook, location }) {
       bookId: bookObj.id,
       userId: user.id,
     };
-    console.warn(payload);
+    // console.warn(payload);
     addUserBook(payload);
   };
 
