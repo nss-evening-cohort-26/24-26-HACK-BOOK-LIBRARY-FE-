@@ -30,8 +30,9 @@ function RegisterForm({ userObj }) {
       updateUser(formData).then(() => router.push(`/user/${userObj.id}`));
     } else {
       const payload = { ...formData, uid: user?.uid };
-      registerUser(payload).then((response) => {
-        router.push(`/user/${response.id}`);
+      registerUser(payload).then(() => {
+        // Redirect to the index page and force reload
+        router.push('/').then(() => window.location.reload());
       });
     }
   };
