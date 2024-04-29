@@ -6,50 +6,38 @@ import { useRouter } from 'next/router';
 import { useAuth } from '../utils/context/authContext';
 import deleteComment from '../api/commentData';
 
-export default function CommentCard({ bookObj, onUpdate }) {
+export default function CommentCard({ commentObj, onUpdate }) {
   const { user } = useAuth();
   const router = useRouter();
 
   const deleteThisComment = () => {
     if (window.confirm('Delete this comment?')) {
-      deleteComment(bookObj.comments.id).then(() => {
+      deleteComment(commentObj.id).then(() => {
         onUpdate();
-        router.push(`/book/${bookObj.id}`);
+        router.push(`/book/${commentObj.id}`);
       });
     }
   };
   return (
     <Card>
-      <Card.Header>{bookObj.comments.user.userName}</Card.Header>
+      <Card.Header>{commentObj.commentsUserName}</Card.Header>
       <Card.Body>
         <Card.Text>
-          {bookObj.comments.content}
+          {commentObj.content}
         </Card.Text>
-        {bookObj.comments.user.id === user.Id ? <Button variant="danger" onClick={deleteThisComment}>Delete</Button> : <p> </p>}
+        {commentObj.commentsUserId === user.Id ? <Button variant="danger" onClick={deleteThisComment}>Delete</Button> : <p> </p>}
       </Card.Body>
     </Card>
   );
 }
 
 CommentCard.propTypes = {
-  bookObj: PropTypes.shape({
+  commentObj: PropTypes.shape({
     id: PropTypes.number,
-    title: PropTypes.string,
-    bookCover: PropTypes.string,
-    authorId: PropTypes.number,
-    genreId: PropTypes.number,
-    publishYear: PropTypes.number,
-    comments: PropTypes.shape({
-      id: PropTypes.number,
-      userId: PropTypes.number,
-      bookId: PropTypes.number,
-      content: PropTypes.string,
-      datePosted: PropTypes.instanceOf(Date),
-      user: PropTypes.shape({
-        id: PropTypes.number,
-        userName: PropTypes.string,
-      }),
-    }),
+    commentsUserId: PropTypes.number,
+    content: PropTypes.string,
+    datePosted: PropTypes.instanceOf(Date),
+    commentsUserName: PropTypes.string,
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,
 };
