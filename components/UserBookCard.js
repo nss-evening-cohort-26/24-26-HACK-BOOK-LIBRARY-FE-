@@ -10,11 +10,12 @@ function UserBookCard() {
 
   const getAllUserBooks = () => {
     getUserBooks(user.id).then(setBooks);
-    console.warn(user.id);
+    // console.warn(user.id);
   };
 
   useEffect(() => {
     getAllUserBooks();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const deleteThisUserBook = (bookObj) => {
