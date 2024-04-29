@@ -1,12 +1,44 @@
-import React, { useState } from 'react';
+import { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react';
+import { PropTypes } from 'prop-types';
 import { Button, Form } from 'react-bootstrap';
+import { createAuthor, updateAuthor } from '../../api/authorData';
 
-export default function AuthorForm() {
-  const [formInput] = useState({});
+const initialState = {
+  name: '',
+};
+
+export default function AuthorForm({ obj }) {
+  const [formInput, setFormInput] = useState({ ...initialState });
+  const router = useRouter();
+
+  useEffect(() => {
+    if (obj.id) setFormInput(obj);
+  }, [obj]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormInput((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const payload = { ...formInput };
+    if (obj.id) {
+      updateAuthor(payload).then(() => router.push('/authors'));
+    } else {
+      createAuthor(payload).then(() => {
+        router.push('/authors');
+      });
+    }
+  };
 
   return (
-    <Form className="custom-form">
-      <h3 className="text">--NEW AUTHOR FORM INPUT CHANGE ME--</h3>
+    <Form className="custom-form" onSubmit={handleSubmit}>
+      <h3 className="text">{obj.id ? 'Update' : 'Create'} Author</h3>
 
       <Form.Group controlId="validationCustom01">
         <Form.Label className="text">Author Name</Form.Label>
@@ -16,10 +48,21 @@ export default function AuthorForm() {
           placeholder="Enter Author Name"
           name="name"
           value={formInput.name}
-         // onChange={handleChange}
+          onChange={handleChange}
         />
       </Form.Group>
-      <Button className="form-button button" type="submit">TO CHANGE</Button>
+      <Button className="form-button button" type="submit">{obj.id ? 'Update' : 'Create'} Author</Button>
     </Form>
   );
 }
+
+AuthorForm.propTypes = {
+  obj: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+  }),
+};
+
+AuthorForm.defaultProps = {
+  obj: initialState,
+};
