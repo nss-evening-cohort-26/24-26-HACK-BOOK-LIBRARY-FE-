@@ -1,7 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import { getSingleBook } from '../../api/bookData';
+import BookCard from '../../components/BookCard';
+import CommentCard from '../../components/CommentCard';
+import { getBooksComments } from '../../api/commentData';
 
 export default function ViewBook() {
+  const router = useRouter();
+  const { id } = router.query;
+
+  const [book, setBook] = useState({});
+  const [booksComments, setBooksComments] = useState([]);
+
+  const getBookDetails = () => {
+    getSingleBook(id).then(setBook);
+    getBooksComments(id).then(setBooksComments);
+  };
+  console.warn(booksComments);
+  useEffect(() => {
+    getBookDetails();
+  }, [id]);
   return (
-    <div> viewBook</div>
+    <div>
+      <BookCard key={book.id} bookObj={book} onUpdate={getBookDetails} location="details" />
+      {booksComments.map((comment) => (
+        <CommentCard key={comment.id} commentObj={comment} onUpdate={getBookDetails} />
+      ))}
+    </div>
   );
 }
