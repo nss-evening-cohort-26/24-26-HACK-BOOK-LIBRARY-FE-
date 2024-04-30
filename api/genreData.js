@@ -20,4 +20,16 @@ const getGenres = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-export default getGenres;
+const getSingleGenre = (id) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/genres/${id}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
+export { getGenres, getSingleGenre };
