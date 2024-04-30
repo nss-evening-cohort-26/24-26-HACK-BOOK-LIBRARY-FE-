@@ -4,6 +4,7 @@ import { getSingleBook } from '../../api/bookData';
 import BookCard from '../../components/BookCard';
 import CommentCard from '../../components/CommentCard';
 import { getBooksComments } from '../../api/commentData';
+import CommentModalForm from '../../components/forms/CommentModalForm';
 
 export default function ViewBook() {
   const router = useRouter();
@@ -26,6 +27,7 @@ export default function ViewBook() {
       {booksComments.map((comment) => (
         <CommentCard key={comment.id} commentObj={comment} onUpdate={getBookDetails} />
       ))}
+      <CommentModalForm />
     </div>
   );
 }
