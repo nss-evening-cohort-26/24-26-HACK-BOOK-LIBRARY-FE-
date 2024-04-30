@@ -2,7 +2,9 @@
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Card, Collapse } from 'react-bootstrap';
+import {
+  Button, Card, Collapse, Image,
+} from 'react-bootstrap';
 import { getSingleAuthorAndBooks } from '../api/authorData';
 
 export default function AuthorCard({ authorObj }) {
@@ -20,10 +22,10 @@ export default function AuthorCard({ authorObj }) {
       <Card.Body>
         <Card.Title>{authorObj.name}</Card.Title>
         <Link href={`/author/edit/${authorObj.id}`} passHref>
-          <Button variant="info">EDIT</Button>
+          <Button variant="info">Edit</Button>
         </Link>
         <Button variant="danger" className="m-2">
-          DELETE
+          Delete
         </Button>
         <Button
           className="bookBtn"
@@ -37,8 +39,11 @@ export default function AuthorCard({ authorObj }) {
           <div id="example-collapse-text">
             {data.books.map((book) => (
               <div key={book.id}>
-                <Link PassHref href={`/book/${book.id}`}>
-                  {book.title}
+                <Link passHref href={`/book/${book.id}`}>
+                  <div style={{ cursor: 'pointer' }}>
+                    <Image src={book.bookCover} alt={book.title} style={{ width: '50px', height: 'auto' }} />
+                    {book.title}
+                  </div>
                 </Link>
               </div>
             ))}

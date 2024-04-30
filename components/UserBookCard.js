@@ -19,7 +19,7 @@ function UserBookCard() {
   }, []);
 
   const deleteThisUserBook = (bookObj) => {
-    if (window.confirm(`Delete ${bookObj.title}?`)) {
+    if (window.confirm(`Remove ${bookObj.title} from your Bookshelf?`)) {
       deleteUserBook(bookObj.id, user.id).then(() => getAllUserBooks());
     }
   };

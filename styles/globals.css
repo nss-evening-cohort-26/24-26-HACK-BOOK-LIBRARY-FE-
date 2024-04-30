@@ -18,11 +18,17 @@ a {
 }
 
 body {
-  background-color: black;
+  background-color: rgb(29, 27, 27);
+}
+
+.card-body{
+  padding: 3px;
 }
 
 .text {
   color: aliceblue;
+  text-align: center;
+  margin: 5px 1px 1px 1px;
 }
 
 .user-container {
@@ -33,4 +39,39 @@ body {
   background-color: black;
   color: grey;
   border-color: grey;
+}
+
+.custom-form{
+  max-width: 66%;
+  margin: 0 auto;
+}
+
+.button{
+  margin: 5px;
+}
+
+.ml-auto {
+  margin-left: auto; 
+}
+
+.custom-btn{
+  max-width: 66%;
+  margin: 0 auto;
+}
+
+.profile-container {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  margin-top: 2%;
+}
+
+.logo {
+  font-size: 30pt;
+  padding: 0;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.navbar {
+  padding: 0;
 }

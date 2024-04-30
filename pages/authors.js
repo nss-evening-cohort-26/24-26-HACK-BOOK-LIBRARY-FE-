@@ -18,7 +18,7 @@ export default function Authors() {
   return (
     <div className="top-container">
       <Link href="/author/new/" passHref>
-        <Button>Add Author</Button>
+        <Button className="button">Add Author</Button>
       </Link>
       <h1 className="text">Authors</h1>
       <div className="d-flex flex-wrap">
