@@ -19,6 +19,7 @@ export default function ViewBook() {
   console.warn(booksComments);
   useEffect(() => {
     getBookDetails();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
   return (
     <div>

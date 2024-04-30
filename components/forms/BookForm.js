@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { PropTypes } from 'prop-types';
 import { useRouter } from 'next/router';
-import getGenres from '../../api/genreData';
+import { getGenres } from '../../api/genreData';
 import { createBook, updateBook } from '../../api/bookData';
 import { getAuthors } from '../../api/authorData';
 
