@@ -2,19 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import { useRouter } from 'next/router';
+// import { useRouter } from 'next/router';
 import { useAuth } from '../utils/context/authContext';
-import deleteComment from '../api/commentData';
+import { deleteComment } from '../api/commentData';
 
 export default function CommentCard({ commentObj, onUpdate }) {
   const { user } = useAuth();
-  const router = useRouter();
+  // const router = useRouter();
+
+  console.log(user.id, commentObj.id);
 
   const deleteThisComment = () => {
     if (window.confirm('Delete this comment?')) {
       deleteComment(commentObj.id).then(() => {
         onUpdate();
-        router.push(`/book/${commentObj.id}`);
       });
     }
   };
@@ -25,7 +26,7 @@ export default function CommentCard({ commentObj, onUpdate }) {
         <Card.Text>
           {commentObj.content}
         </Card.Text>
-        {commentObj.commentsUserId === user.Id ? <Button variant="danger" onClick={deleteThisComment}>Delete</Button> : <p> </p>}
+        {commentObj.commentsUserId === user.id ? <Button variant="danger" onClick={deleteThisComment}>Delete</Button> : <p> </p>}
       </Card.Body>
     </Card>
   );
