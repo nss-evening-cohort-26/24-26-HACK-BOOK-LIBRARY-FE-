@@ -17,19 +17,21 @@ export default function ViewUserBookShelf() {
 
   return (
     <>
-      <div className="user-container">
-        <UserCard userObj={userInfo} onUpdate={setUserInfo} />
+      <div className="profile-container">
+        <div className="user-container">
+          <UserCard userObj={userInfo} onUpdate={setUserInfo} />
+        </div>
+        <hr
+          style={{
+            backgroundColor: 'white',
+            color: 'white',
+            borderColor: 'white',
+            height: '2px',
+          }}
+        />
       </div>
-      <hr
-        style={{
-          backgroundColor: 'white',
-          color: 'white',
-          borderColor: 'white',
-          height: '2px',
-        }}
-      />
       <div className="container">
-        <h2 style={{ color: 'white' }}>Books</h2>
+        <h2 className="text">Your Bookshelf</h2>
         <UserBookCard />
         <br /><br />
       </div>
