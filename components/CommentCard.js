@@ -2,15 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-// import { useRouter } from 'next/router';
 import { useAuth } from '../utils/context/authContext';
 import { deleteComment } from '../api/commentData';
 
 export default function CommentCard({ commentObj, onUpdate }) {
   const { user } = useAuth();
-  // const router = useRouter();
-
-  console.log(user.id, commentObj.id);
 
   const deleteThisComment = () => {
     if (window.confirm('Delete this comment?')) {
