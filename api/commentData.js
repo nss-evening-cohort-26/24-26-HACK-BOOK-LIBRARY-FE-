@@ -3,7 +3,7 @@ import { clientCredentials } from '../utils/client';
 const endpoint = clientCredentials.databaseURL;
 
 const deleteComment = (bookId) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/book/comments/${bookId}`, {
+  fetch(`${endpoint}/comments/${bookId}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
