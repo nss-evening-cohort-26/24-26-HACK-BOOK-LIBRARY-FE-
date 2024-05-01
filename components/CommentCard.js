@@ -18,7 +18,7 @@ export default function CommentCard({ commentObj, onUpdate }) {
   };
   return (
     <Card>
-      <Card.Header>{commentObj.commentsUserName}</Card.Header>
+      <Card.Header>{commentObj.commentsUserName} posted on:  {new Date(commentObj.datePosted).toLocaleDateString()}</Card.Header>
       <Card.Body>
         <Card.Text>
           {commentObj.content}
@@ -36,7 +36,7 @@ CommentCard.propTypes = {
     id: PropTypes.number,
     commentsUserId: PropTypes.number,
     content: PropTypes.string,
-    datePosted: PropTypes.instanceOf(Date),
+    datePosted: PropTypes.string,
     commentsUserName: PropTypes.string,
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,
