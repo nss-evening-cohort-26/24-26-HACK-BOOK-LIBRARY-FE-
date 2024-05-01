@@ -21,14 +21,14 @@ export default function ViewBook() {
   useEffect(() => {
     getBookDetails();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id]);
+  }, [id, booksComments.id]);
   return (
     <div>
       <BookCard key={book.id} bookObj={book} onUpdate={getBookDetails} location="details" />
       {booksComments.map((comment) => (
         <CommentCard key={comment.id} commentObj={comment} onUpdate={getBookDetails} />
       ))}
-      <CommentModalForm />
+      <CommentModalForm onUpdate={getBookDetails} />
     </div>
   );
 }

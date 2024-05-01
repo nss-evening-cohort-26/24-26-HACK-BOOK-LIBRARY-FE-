@@ -11,7 +11,7 @@ const initialState = {
   content: ' ',
 };
 
-function CommentModalForm({ commentObj }) {
+function CommentModalForm({ commentObj, onUpdate }) {
   const [show, setShow] = useState(false);
   const [formInput, setFormInput] = useState({});
   const { user } = useAuth();
@@ -19,6 +19,7 @@ function CommentModalForm({ commentObj }) {
   const { id } = router.query;
 
   const handleClose = () => setShow(false);
+
   const handleShow = () => setShow(true);
 
   useEffect(() => {
@@ -40,10 +41,16 @@ function CommentModalForm({ commentObj }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.warn(commentObj);
     if (commentObj.id) {
-      editComment(commentObj.id, formInput).then(() => router.push(`/book/${id}`)).then(handleClose);
+      editComment(commentObj.id, formInput).then(() => router.push(`/book/${id}`)).then(handleClose).then(() => {
+        onUpdate();
+      });
     } else {
-      createComment(formInput).then(() => router.push(`/book/${id}`)).then(handleClose);
+      createComment(formInput).then(() => router.push(`/book/${id}`)).then(handleClose).then(setFormInput(initialState))
+        .then(() => {
+          onUpdate();
+        });
     }
   };
 
@@ -70,7 +77,6 @@ function CommentModalForm({ commentObj }) {
                 value={formInput.content}
               />
             </Form.Group>
-            <Button className="form-button button" type="submit">Add Comment</Button>
           </Form>
         </Modal.Body>
         <Modal.Footer>
@@ -93,6 +99,7 @@ CommentModalForm.propTypes = {
     userId: PropTypes.number,
     content: PropTypes.string,
   }),
+  onUpdate: PropTypes.func.isRequired,
 };
 
 CommentModalForm.defaultProps = {
