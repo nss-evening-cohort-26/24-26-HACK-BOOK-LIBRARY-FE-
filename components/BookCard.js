@@ -15,13 +15,17 @@ function BookCard({ bookObj, deleteBook, location }) {
 
   useEffect(() => {
     const getAuthor = async () => {
-      const authorData = await getSingleAuthor(bookObj.authorId);
-      setAuthor(authorData);
+      if (bookObj.authorId) {
+        const authorData = await getSingleAuthor(bookObj.authorId);
+        setAuthor(authorData);
+      }
     };
 
     const getGenre = async () => {
-      const genreData = await getSingleGenre(bookObj.genreId);
-      setGenre(genreData);
+      if (bookObj.genreId) {
+        const genreData = await getSingleGenre(bookObj.genreId);
+        setGenre(genreData);
+      }
     };
 
     getAuthor();
