@@ -6,10 +6,12 @@ import {
   Button, Card, Collapse, Image,
 } from 'react-bootstrap';
 import { getSingleAuthorAndBooks } from '../api/authorData';
+import { useAuth } from '../utils/context/authContext';
 
 export default function AuthorCard({ authorObj }) {
   const [open, setOpen] = useState(false);
   const [data, setData] = useState({ books: [] });
+  const { user } = useAuth();
 
   useEffect(() => {
     getSingleAuthorAndBooks(authorObj.id).then((responseData) => {
@@ -21,12 +23,16 @@ export default function AuthorCard({ authorObj }) {
     <Card style={{ width: '18rem', margin: '10px' }}>
       <Card.Body>
         <Card.Title>{authorObj.name}</Card.Title>
-        <Link href={`/author/edit/${authorObj.id}`} passHref>
-          <Button variant="info">Edit</Button>
-        </Link>
-        <Button variant="danger" className="m-2">
-          Delete
-        </Button>
+        {user.isAdmin && (
+        <>
+          <Link href={`/author/edit/${authorObj.id}`} passHref>
+            <Button variant="info">Edit</Button>
+          </Link>
+          <Button variant="danger" className="m-2">
+            Delete
+          </Button>
+        </>
+        )}
         <Button
           className="bookBtn"
           onClick={() => setOpen(!open)}
