@@ -3,8 +3,10 @@ import { Button } from 'react-bootstrap';
 import Link from 'next/link';
 import BookCard from '../components/BookCard';
 import { deleteBook, getBooks } from '../api/bookData';
+import { useAuth } from '../utils/context/authContext';
 
 export default function Library() {
+  const { user } = useAuth();
   const [books, setBooks] = useState([]);
 
   const getAllTheBooks = () => {
@@ -19,15 +21,16 @@ export default function Library() {
   const deleteThisLibraryBook = (bookObj) => {
     if (window.confirm(`Delete ${bookObj.title}?`)) {
       deleteBook(bookObj.id).then(() => getAllTheBooks());
-      console.warn('Sorry! Only Admins can delete books from the library!');
     }
   };
 
   return (
     <>
+      {user.isAdmin && (
       <Link href="/book/new/" passHref>
         <Button className="button">Add Book</Button>
       </Link>
+      )}
       <h4 className="text">Be quite in the god damn Library!</h4>
       <div className="d-flex flex-wrap">
         {books.map((book) => (

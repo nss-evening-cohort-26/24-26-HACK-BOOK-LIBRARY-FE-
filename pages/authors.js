@@ -3,8 +3,10 @@ import { Button } from 'react-bootstrap';
 import Link from 'next/link';
 import { getAuthors } from '../api/authorData';
 import AuthorCard from '../components/AuthorCard';
+import { useAuth } from '../utils/context/authContext';
 
 export default function Authors() {
+  const { user } = useAuth();
   const [authors, setAuthors] = useState([]);
 
   const getAllAuthors = () => {
@@ -17,9 +19,11 @@ export default function Authors() {
 
   return (
     <div className="top-container">
-      <Link href="/author/new/" passHref>
-        <Button className="button">Add Author</Button>
-      </Link>
+      { user.isAdmin && (
+        <Link href="/author/new/" passHref>
+          <Button className="button">Add Author</Button>
+        </Link>
+      )}
       <h1 className="text">Authors</h1>
       <div className="d-flex flex-wrap">
         {authors.map((author) => (

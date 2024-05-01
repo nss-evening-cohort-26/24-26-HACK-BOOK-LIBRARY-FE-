@@ -12,6 +12,7 @@ function BookCard({ bookObj, deleteBook, location }) {
   const [author, setAuthor] = useState({});
   const [genre, setGenre] = useState({});
   const [hover, setHover] = useState(false);
+  const { user } = useAuth();
 
   useEffect(() => {
     const getAuthor = async () => {
@@ -31,7 +32,6 @@ function BookCard({ bookObj, deleteBook, location }) {
     getAuthor();
     getGenre();
   }, [bookObj]);
-  const { user } = useAuth();
 
   const addThisBookToBookshelf = () => {
     window.alert('Book added to bookshelf!');
@@ -101,18 +101,23 @@ function BookCard({ bookObj, deleteBook, location }) {
               VIEW
             </Button>
           </Link>
-          <Link href={`/book/edit/${bookObj.id}`} passHref>
-            <Button variant="info" className="m-2">
-              EDIT
-            </Button>
-          </Link>
-          <Button
-            variant="danger"
-            onClick={() => deleteBook(bookObj)}
-            className="m-2"
-          >
-            {location === 'library' ? 'Burn The Book' : 'Remove From Shelf'}
-          </Button>
+          {user.isAdmin && (
+            <div>
+
+              <Link href={`/book/edit/${bookObj.id}`} passHref>
+                <Button variant="info" className="m-2">
+                  EDIT
+                </Button>
+              </Link>
+              <Button
+                variant="danger"
+                onClick={() => deleteBook(bookObj)}
+                className="m-2"
+              >
+                {location === 'library' ? 'Burn The Book' : 'Remove From Shelf'}
+              </Button>
+            </div>
+          )}
           {location === 'library' && (
             <Button
               variant="success"
