@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Link from 'next/link';
+import Image from 'next/image';
 import { addUserBook } from '../api/bookData';
 import { useAuth } from '../utils/context/authContext';
 import { getSingleAuthor } from '../api/authorData';
@@ -12,7 +13,6 @@ function BookCard({ bookObj, deleteBook, location }) {
   const [author, setAuthor] = useState({});
   const [genre, setGenre] = useState({});
   const [hover, setHover] = useState(false);
-  const { user } = useAuth();
 
   useEffect(() => {
     const getAuthor = async () => {
@@ -32,6 +32,7 @@ function BookCard({ bookObj, deleteBook, location }) {
     getAuthor();
     getGenre();
   }, [bookObj]);
+  const { user } = useAuth();
 
   const addThisBookToBookshelf = () => {
     window.alert('Book added to bookshelf!');
@@ -96,28 +97,25 @@ function BookCard({ bookObj, deleteBook, location }) {
           {author && <h5>{author.name}</h5>}
           <h5>{bookObj.publishYear}</h5>
           {genre && <h5>Genre: {genre.genreName}</h5>}
-          <Link href={`/book/${bookObj.id}`} passHref>
-            <Button variant="primary" className="m-2">
-              VIEW
-            </Button>
-          </Link>
-          {user.isAdmin && (
-            <div>
-
-              <Link href={`/book/edit/${bookObj.id}`} passHref>
-                <Button variant="info" className="m-2">
-                  EDIT
-                </Button>
-              </Link>
-              <Button
-                variant="danger"
-                onClick={() => deleteBook(bookObj)}
-                className="m-2"
-              >
-                {location === 'library' ? 'Burn The Book' : 'Remove From Shelf'}
+          <Card.Text>
+            <Link href={`/book/${bookObj.id}`} passHref>
+              <Button variant="light" className="m-2">
+                <Image src="/assets/viewicon.png" alt="Edit" width={22} height={22} />
               </Button>
-            </div>
-          )}
+            </Link>
+            <Link href={`/book/edit/${bookObj.id}`} passHref>
+              <Button variant="outline-dark" style={{ backgroundColor: 'black', color: 'white' }}>
+                <Image src="/assets/editicon.png" alt="Edit" width={22} height={22} />
+              </Button>
+            </Link>
+          </Card.Text>
+          <Button
+            variant="danger"
+            onClick={() => deleteBook(bookObj)}
+            className="m-2"
+          >
+            {location === 'library' ? 'Burn The Book' : 'Remove From Shelf'}
+          </Button>
           {location === 'library' && (
             <Button
               variant="success"

@@ -2,6 +2,7 @@
 import { Button, Card } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useAuth } from '../utils/context/authContext';
 
 export default function UserCard({ userObj }) {
@@ -15,7 +16,13 @@ export default function UserCard({ userObj }) {
         <Card.Text>Email: {userObj.email}</Card.Text>
         <Card.Text>Bio: {userObj.bio}</Card.Text>
         {isCurrentUserProfile && (
-          <Card.Text><Link href={`/user/edit/${userObj.id}`} passHref><Button variant="outline-light">Edit Profile</Button></Link></Card.Text>
+          <Card.Text id="edit-user" style={{ display: 'flex', justifyContent: 'center' }}>
+            <Link href={`/user/edit/${userObj.id}`} passHref>
+              <Button variant="outline-light">
+                <Image src="/assets/editicon.png" alt="Edit" width={22} height={22} />
+              </Button>
+            </Link>
+          </Card.Text>
         )}
       </Card.Body>
     </Card>
