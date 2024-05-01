@@ -13,18 +13,23 @@ export default function ViewBook() {
   const [book, setBook] = useState({});
   const [booksComments, setBooksComments] = useState([]);
 
+  const warnMe = () => { // this is a place holder to prevent the prop from throwing a warning
+    console.warn(book);
+  };
+
   const getBookDetails = () => {
     getSingleBook(id).then(setBook);
     getBooksComments(id).then(setBooksComments);
+    console.warn(book);
   };
   console.warn(booksComments);
   useEffect(() => {
     getBookDetails();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id, booksComments.id]);
+  }, [id]);
   return (
     <div>
-      <BookCard key={book.id} bookObj={book} onUpdate={getBookDetails} location="details" />
+      <BookCard key={book.id} bookObj={book} onUpdate={getBookDetails} deleteBook={warnMe} location="details" />
       {booksComments.map((comment) => (
         <CommentCard key={comment.id} commentObj={comment} onUpdate={getBookDetails} />
       ))}
