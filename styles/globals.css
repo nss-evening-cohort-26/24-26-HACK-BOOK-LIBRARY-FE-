@@ -51,6 +51,8 @@ body {
 }
 
 .ml-auto {
+  display: flex;
+  gap: 5px;
   margin-left: auto; 
 }
 
@@ -78,4 +80,44 @@ body {
 
 #edit-user {
   align-content: center;
+}
+
+.box {
+  display: flex;
+}
+
+.info-box{
+  display: flex;
+}
+
+.card-display {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-right: 1px solid #ccc;
+}
+
+.image-container {
+  width: 33.33%;
+  margin-right: 5px;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+}
+
+.rate.box{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.comment-display {
+  flex: 2;
+  background-color: #fff;
+  padding: 20px;
 }
