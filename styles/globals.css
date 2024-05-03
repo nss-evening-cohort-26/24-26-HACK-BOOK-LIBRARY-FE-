@@ -51,6 +51,8 @@ body {
 }
 
 .ml-auto {
+  display: flex;
+  gap: 5px;
   margin-left: auto; 
 }
 
@@ -74,4 +76,61 @@ body {
 
 .navbar {
   padding: 0;
+}
+
+#edit-user {
+  align-content: center;
+}
+.box {
+  display: flex;
+}
+
+.info-box {
+  display: flex;
+}
+
+.card-display {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #413a3a;
+  padding: 10px;
+  border: 1px solid #fcfcfc;
+}
+
+.image-container {
+  width: 33.33%;
+  margin-right: 5px;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+}
+
+.info-container {
+  color: #fcfcfc;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-right: 5px;
+}
+
+.info-container p {
+  margin: 5px 0;
+}
+
+.rate-box {
+  color: #fcfcfc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.comment-display {
+  flex: 2;
+  background-color: #554848;
+  padding: 20px;
+  border: 1px solid #fcfcfc;
 }

@@ -9,6 +9,7 @@ import {
 } from 'react-bootstrap';
 import { signOut } from '../utils/auth';
 import { useAuth } from '../utils/context/authContext';
+import SearchBar from './SearchBar';
 
 export default function NavBar() {
   const { user } = useAuth();
@@ -35,7 +36,17 @@ export default function NavBar() {
             <Link passHref href="/authors">
               <Nav.Link>Authors</Nav.Link>
             </Link>
+
             <div className="ml-auto">
+              <SearchBar />
+            </div>
+
+            <div className="ml-auto">
+              {user.isAdmin && (
+              <Link passHref href="/admin">
+                <Nav.Link>Admin</Nav.Link>
+              </Link>
+              )}
               <Button variant="danger" onClick={signOut}>
                 Sign Out
               </Button>

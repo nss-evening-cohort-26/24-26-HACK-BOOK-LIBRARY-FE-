@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import Image from 'next/image';
 import { useAuth } from '../utils/context/authContext';
 import { deleteComment } from '../api/commentData';
 
@@ -17,12 +18,14 @@ export default function CommentCard({ commentObj, onUpdate }) {
   };
   return (
     <Card>
-      <Card.Header>{commentObj.commentsUserName}</Card.Header>
+      <Card.Header>{commentObj.commentsUserName} posted on:  {new Date(commentObj.datePosted).toLocaleDateString()}</Card.Header>
       <Card.Body>
         <Card.Text>
           {commentObj.content}
         </Card.Text>
-        {commentObj.commentsUserId === user.id ? <Button variant="danger" onClick={deleteThisComment}>Delete</Button> : <p> </p>}
+        <Card.Text style={{ display: 'flex', justifyContent: 'center' }}>
+          {commentObj.commentsUserId === user.id ? <Button variant="danger" onClick={deleteThisComment}><Image src="/assets/deleteicon.png" alt="Edit" width={22} height={22} /></Button> : <p> </p>}
+        </Card.Text>
       </Card.Body>
     </Card>
   );
@@ -33,7 +36,7 @@ CommentCard.propTypes = {
     id: PropTypes.number,
     commentsUserId: PropTypes.number,
     content: PropTypes.string,
-    datePosted: PropTypes.instanceOf(Date),
+    datePosted: PropTypes.string,
     commentsUserName: PropTypes.string,
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,
