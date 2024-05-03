@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {
-  Button, Container, ListGroup,
-} from 'react-bootstrap';
+import { Button, Container, Table } from 'react-bootstrap';
 import { getAllUsers, makeUserAdmin } from '../api/userData';
 import { useAuth } from '../utils/context/authContext';
 
@@ -38,27 +36,32 @@ const AdminControlPanel = () => {
     <Container className="mt-5">
       {(!user || !user.isAdmin) && <div className="text-white">LOL NOPE</div>}
       {user && user.isAdmin && (
-
-      <ListGroup>
-        {users.map((userItem) => (
-          <ListGroup.Item key={userItem.id} className="bg-dark text-white">
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <div>
-                <h5>{userItem.userName}</h5>
-                <p><strong>Status:</strong> {userItem.isAdmin ? 'Admin' : 'User'}</p>
-              </div>
-              {!userItem.isAdmin && (
-              <Button
-                variant="warning"
-                onClick={() => handleMakeAdmin(userItem.id)}
-              >
-                Make Admin
-              </Button>
-              )}
-            </div>
-          </ListGroup.Item>
-        ))}
-      </ListGroup>
+        <Table striped bordered hover variant="dark">
+          <thead>
+            <tr>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Admin</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {users.map((userItem) => (
+              <tr key={userItem.id}>
+                <td>{userItem.userName}</td>
+                <td>{userItem.email}</td>
+                <td>{userItem.isAdmin ? 'Admin' : 'User'}</td>
+                <td>
+                  {!userItem.isAdmin && (
+                    <Button variant="warning" onClick={() => handleMakeAdmin(userItem.id)}>
+                      Make Admin
+                    </Button>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
       )}
     </Container>
   );
