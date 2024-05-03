@@ -5,7 +5,7 @@ import { searchBooks } from '../../api/searchData';
 import BookCard from '../../components/BookCard';
 
 export default function Search() {
-  const [filteredBooks, setFilteredBooks] = useState();
+  const [filteredBooks, setFilteredBooks] = useState([]);
   // const [filteredAuthors, setFilteredAuthors] = useState();
   const router = useRouter();
   const { searchInput } = router.query;
