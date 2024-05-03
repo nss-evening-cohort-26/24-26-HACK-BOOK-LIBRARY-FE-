@@ -81,12 +81,11 @@ body {
 #edit-user {
   align-content: center;
 }
-
 .box {
   display: flex;
 }
 
-.info-box{
+.info-box {
   display: flex;
 }
 
@@ -94,9 +93,9 @@ body {
   flex: 1;
   display: flex;
   flex-direction: column;
-  background-color: #f0f0f0;
+  background-color: #413a3a;
   padding: 10px;
-  border-right: 1px solid #ccc;
+  border: 1px solid #fcfcfc;
 }
 
 .image-container {
@@ -109,7 +108,20 @@ body {
   height: auto;
 }
 
-.rate.box{
+.info-container {
+  color: #fcfcfc;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-right: 5px;
+}
+
+.info-container p {
+  margin: 5px 0;
+}
+
+.rate-box {
+  color: #fcfcfc;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -118,6 +130,7 @@ body {
 
 .comment-display {
   flex: 2;
-  background-color: #fff;
+  background-color: #554848;
   padding: 20px;
+  border: 1px solid #fcfcfc;
 }

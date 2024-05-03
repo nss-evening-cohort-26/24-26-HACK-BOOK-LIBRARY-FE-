@@ -30,9 +30,9 @@ export default function ViewBook() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
   return (
-    <div className="box">{/* this div should remain code free, but contains comment and book data */}
-      <div className="card-display">{/* this div should remain code free, but contains book data */}
-        <div className="info-box">{/* this div should remain code free */}
+    <div className="box">
+      <div className="card-display">
+        <div className="info-box">
           <div className="image-container">
             <Image src={book.bookCover} />
           </div>
