@@ -13,6 +13,7 @@ function BookCard({ bookObj, deleteBook, location }) {
   const [author, setAuthor] = useState({});
   const [genre, setGenre] = useState({});
   const [hover, setHover] = useState(false);
+  const { user } = useAuth();
 
   useEffect(() => {
     const getAuthor = async () => {
@@ -32,7 +33,6 @@ function BookCard({ bookObj, deleteBook, location }) {
     getAuthor();
     getGenre();
   }, [bookObj]);
-  const { user } = useAuth();
 
   const addThisBookToBookshelf = () => {
     window.alert('Book added to bookshelf!');
@@ -94,8 +94,9 @@ function BookCard({ bookObj, deleteBook, location }) {
             marginTop: '30%',
           }}
         >
+          <h5>{bookObj.title} by</h5>
           {author && <h5>{author.name}</h5>}
-          <h5>{bookObj.publishYear}</h5>
+          <h5>published in {bookObj.publishYear}</h5>
           {genre && <h5>Genre: {genre.genreName}</h5>}
           <Card.Text>
             <Link href={`/book/${bookObj.id}`} passHref>

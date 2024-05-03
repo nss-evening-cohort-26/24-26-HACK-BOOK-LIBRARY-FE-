@@ -36,6 +36,11 @@ export default function NavBar() {
               <Nav.Link>Authors</Nav.Link>
             </Link>
             <div className="ml-auto">
+              {user.isAdmin && (
+              <Link passHref href="/admin">
+                <Nav.Link>Admin</Nav.Link>
+              </Link>
+              )}
               <Button variant="danger" onClick={signOut}>
                 Sign Out
               </Button>
