@@ -55,6 +55,7 @@ function BookCard({ bookObj, deleteBook, location }) {
         margin: '10px',
         border: '0px',
         boxShadow: '5px 5px 10px 2px rgba(17, 14, 14, 0.979)',
+        minHeight: '350px',
       }}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
@@ -84,6 +85,7 @@ function BookCard({ bookObj, deleteBook, location }) {
           transition: 'opacity 0.3s ease',
           backgroundImage: 'url(https://img.freepik.com/free-photo/wooden-floor-background_53876-88628.jpg)',
           backgroundSize: 'cover',
+          minHeight: '350px',
 
         }}
       >
@@ -98,25 +100,40 @@ function BookCard({ bookObj, deleteBook, location }) {
           {author && <h5>{author.name}</h5>}
           <h5>published in {bookObj.publishYear}</h5>
           {genre && <h5>Genre: {genre.genreName}</h5>}
-          <Card.Text>
-            <Link href={`/book/${bookObj.id}`} passHref>
-              <Button variant="light" className="m-2">
-                <Image src="/assets/viewicon.png" alt="Edit" width={22} height={22} />
+          {user.isAdmin ? (
+            <>
+              <Card.Text>
+                <Link href={`/book/${bookObj.id}`} passHref>
+                  <Button variant="light" className="m-2">
+                    <Image src="/assets/viewicon.png" alt="Edit" width={22} height={22} />
+                  </Button>
+                </Link>
+                <Link href={`/book/edit/${bookObj.id}`} passHref>
+                  <Button variant="outline-dark" style={{ backgroundColor: 'black', color: 'white' }}>
+                    <Image src="/assets/editicon.png" alt="Edit" width={22} height={22} />
+                  </Button>
+                </Link>
+              </Card.Text>
+              <Button
+                variant="danger"
+                onClick={() => deleteBook(bookObj)}
+                className="m-2"
+              >
+                {location === 'library' ? 'Burn The Book' : 'Remove From Shelf'}
               </Button>
-            </Link>
-            <Link href={`/book/edit/${bookObj.id}`} passHref>
-              <Button variant="outline-dark" style={{ backgroundColor: 'black', color: 'white' }}>
-                <Image src="/assets/editicon.png" alt="Edit" width={22} height={22} />
-              </Button>
-            </Link>
-          </Card.Text>
-          <Button
-            variant="danger"
-            onClick={() => deleteBook(bookObj)}
-            className="m-2"
-          >
-            {location === 'library' ? 'Burn The Book' : 'Remove From Shelf'}
-          </Button>
+            </>
+          ) : (
+            location !== 'library' && (
+            <Button
+              variant="danger"
+              onClick={() => deleteBook(bookObj)}
+              className="m-2"
+            >
+              Remove From Shelf
+            </Button>
+            )
+          )}
+
           {location === 'library' && (
             <Button
               variant="success"
