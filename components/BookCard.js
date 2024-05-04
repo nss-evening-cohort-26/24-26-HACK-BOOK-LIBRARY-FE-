@@ -86,14 +86,13 @@ function BookCard({ bookObj, deleteBook, location }) {
           backgroundImage: 'url(https://img.freepik.com/free-photo/wooden-floor-background_53876-88628.jpg)',
           backgroundSize: 'cover',
           minHeight: '350px',
-
         }}
       >
         <Card.Body
           className="card-body"
           style={{
             textAlign: 'center',
-            marginTop: '30%',
+            marginTop: '20%',
           }}
         >
           <h5>{bookObj.title} by</h5>
@@ -133,7 +132,6 @@ function BookCard({ bookObj, deleteBook, location }) {
             </Button>
             )
           )}
-
           {location === 'library' && (
             <Button
               variant="success"
