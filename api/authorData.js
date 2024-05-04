@@ -94,6 +94,18 @@ const updateAuthor = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const deleteSingleAuthorAndBooks = (authorObj) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/authors/${authorObj.id}/books`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
 export {
   getAuthors,
   deleteAuthor,
@@ -102,4 +114,5 @@ export {
   getAuthorsAndBooks,
   getSingleAuthorAndBooks,
   updateAuthor,
+  deleteSingleAuthorAndBooks,
 };
