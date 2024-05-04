@@ -41,6 +41,18 @@ const getSingleBook = (id) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getSingleBookWithDetails = (id) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/books/${id}/author/genre/rating`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
 // ADD A BOOK
 const createBook = (payload) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/books`, {
@@ -117,4 +129,5 @@ export {
   getUserBooks,
   addUserBook,
   deleteUserBook,
+  getSingleBookWithDetails,
 };
