@@ -1,40 +1,58 @@
-import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { getSingleUser } from '../../api/userData';
+import { useRouter } from 'next/router';
+import { useAuth } from '../../utils/context/authContext';
 import UserCard from '../../components/UserCard';
-import UserBookCard from '../../components/UserBookCard';
+import { getSingleUser } from '../../api/userData';
+import UserBookshelves from '../../components/UserBookshelves';
 
-export default function ViewUserBookShelf() {
-  const [userInfo, setUserInfo] = useState({});
+function ViewUserProfiles() {
+  const { user } = useAuth();
+  const [profile, setProfile] = useState({});
   const router = useRouter();
   const { id } = router.query;
 
   useEffect(() => {
-    if (id) {
-      getSingleUser(id).then(setUserInfo);
-    }
+    getSingleUser(id).then(setProfile);
   }, [id]);
 
+  if (id !== user.id.toString()) {
+    return (
+      <>
+        <div className="profile-shelf">
+          <div className="profile-info">
+            <h1>{profile.userName} </h1>
+            <UserCard userObj={profile} />
+          </div>
+          <div className="shelf-items">
+            <div className="user-review text">
+              {" other user's ratings of books"}
+            </div>
+            <div className="users-shelf">
+              <UserBookshelves user={profile} />
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
   return (
     <>
-      <div className="profile-container">
-        <div className="user-container">
-          <UserCard userObj={userInfo} onUpdate={setUserInfo} />
+      <div className="profile-shelf">
+        <div className="profile-info">
+          <h1>{profile.userName} </h1>
+          <UserCard userObj={profile} />
         </div>
-        <hr
-          style={{
-            backgroundColor: 'white',
-            color: 'white',
-            borderColor: 'white',
-            height: '2px',
-          }}
-        />
-      </div>
-      <div className="container">
-        <h2 className="text">Your Bookshelf</h2>
-        <UserBookCard />
-        <br /><br />
+        <div className="shelf-items">
+          <div className="user-review">
+            My reviews
+          </div>
+          <div className="users-shelf">
+            <UserBookshelves user={profile} />
+          </div>
+        </div>
       </div>
     </>
   );
 }
+
+export default ViewUserProfiles;

@@ -134,3 +134,34 @@ body {
   padding: 20px;
   border: 1px solid #fcfcfc;
 }
+
+.profile-info {
+  text-align: center;
+  padding: 5px;
+  max-width: 400px;
+  margin: 5px;
+  color: whitesmoke;
+  border: 1px solid #fcfcfc;/* check for removal*/
+}
+
+.profile-shelf {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ }
+
+
+.shelf-items {
+  display: flex;
+  flex-direction: column; /* Arrange items in a column */
+}
+
+.users-shelf {
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap to the next row */
+}
+
+.user-review {
+  text-align: center;
+color: aliceblue;
+}

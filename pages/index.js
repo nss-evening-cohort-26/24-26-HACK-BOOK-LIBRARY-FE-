@@ -1,11 +1,12 @@
-import UserBookCard from '../components/UserBookCard';
 import RegisterForm from '../components/RegisterForm';
+import UserBookCard from '../components/UserBookCard';
 import { useAuth } from '../utils/context/authContext';
 
-function Home() {
+export default function Home() {
   const { user } = useAuth();
   const isUser = user?.id;
 
+  // directs new users to a few user form
   if (!isUser) {
     return (
       <RegisterForm />
@@ -14,23 +15,20 @@ function Home() {
 
   return (
     <>
-      <div
-        className="text-center d-flex flex-column justify-content-center align-content-center"
-        style={{
-          padding: '30px',
-          maxWidth: '400px',
-          margin: '0 auto',
-          color: 'whitesmoke',
-        }}
-      >
-        <h1>Welcome  {user.userName} to Your Bookshelf!</h1>
-      </div>
-      <div className="d-flex flex-wrap">
+      <div />
+      <div className="container">
+        <h2 className="text">Your Bookshelf</h2>
+        <hr
+          style={{
+            backgroundColor: 'white',
+            color: 'white',
+            borderColor: 'white',
+            height: '2px',
+          }}
+        />
         <UserBookCard />
+        <br /><br />
       </div>
     </>
-
   );
 }
-
-export default Home;
