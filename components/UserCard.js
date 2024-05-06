@@ -10,9 +10,8 @@ export default function UserCard({ userObj }) {
   const isCurrentUserProfile = user.uid === userObj.uid;
 
   return (
-    <Card className="user-card" style={{ width: '48rem' }}>
+    <Card className="user-card">
       <Card.Body>
-        <Card.Title variant="top">{userObj.userName}'s Bookshelf</Card.Title>
         <Card.Text>Email: {userObj.email}</Card.Text>
         <Card.Text>Bio: {userObj.bio}</Card.Text>
         {isCurrentUserProfile && (

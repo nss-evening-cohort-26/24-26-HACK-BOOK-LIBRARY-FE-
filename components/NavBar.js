@@ -25,10 +25,10 @@ export default function NavBar() {
           <Nav className="me-auto" style={{ width: '100%' }}>
             {/* CLOSE NAVBAR ON LINK SELECTION: https://stackoverflow.com/questions/72813635/collapse-on-select-react-bootstrap-navbar-with-nextjs-not-working */}
             <Link passHref href="/">
-              <Nav.Link>Home</Nav.Link>
+              <Nav.Link>Shelf</Nav.Link>
             </Link>
             <Link passHref href={`/user/${user?.id}`}>
-              <Nav.Link>Bookshelf</Nav.Link>
+              <Nav.Link>Profile</Nav.Link>
             </Link>
             <Link passHref href="/library">
               <Nav.Link>Library</Nav.Link>
