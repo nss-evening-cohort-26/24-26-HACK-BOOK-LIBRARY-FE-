@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Image } from 'react-bootstrap';
-import { getSingleBook } from '../../api/bookData';
+import { getSingleBookWithDetails } from '../../api/bookData';
 // import BookCard from '../../components/BookCard';
 import CommentCard from '../../components/CommentCard';
 import { getBooksComments } from '../../api/commentData';
@@ -20,7 +20,7 @@ export default function ViewBook() {
   // };
 
   const getBookDetails = () => {
-    getSingleBook(id).then(setBook);
+    getSingleBookWithDetails(id).then(setBook);
     getBooksComments(id).then(setBooksComments);
     console.warn('contents of book in Details', book);
   };
@@ -37,19 +37,18 @@ export default function ViewBook() {
             <Image src={book.bookCover} />
           </div>
           <div className="info-container">{/* code realted to author, Pubyear, genre, and total rating go in this div */}
-            <p>Author</p>
-            <p>Genre</p>
-            <p>Publish</p>
-            <p>Overall Rating</p>
+            <p>Author: {book.name}</p>
+            <p>Genre: {book.genreName} </p>
+            <p>Year Published: {book.publishYear}</p>
+            <p>Overall Rating:</p>
           </div>
         </div>
         <div className="rate-box"> {/* code realated to the rating, buttons, or description should go in this div */}
-          My rating
+          My rating:
           <Rating />
         </div>
       </div>
       <div className="comment-display">
-        comments div
         {booksComments.map((comment) => (
           <CommentCard key={comment.id} commentObj={comment} onUpdate={getBookDetails} />
         ))}

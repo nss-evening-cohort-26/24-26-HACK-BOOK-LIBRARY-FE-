@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import Link from 'next/link';
-import { getAuthors } from '../api/authorData';
+import { deleteSingleAuthorAndBooks, getAuthors } from '../api/authorData';
 import AuthorCard from '../components/AuthorCard';
 import { useAuth } from '../utils/context/authContext';
 import SearchBar from '../components/SearchBar';
@@ -18,6 +18,12 @@ export default function Authors() {
     getAllAuthors();
   }, []);
 
+  const deleteAuthorAndbooks = (authorObj) => {
+    if (window.confirm(`Delete ${authorObj.name}, and all of their books?`)) {
+      deleteSingleAuthorAndBooks(authorObj).then(() => getAllAuthors());
+    }
+  };
+
   return (
     <>
       <SearchBar location="authors" />
@@ -31,7 +37,7 @@ export default function Authors() {
         <h1 className="text">Authors</h1>
         <div className="d-flex flex-wrap">
           {authors.map((author) => (
-            <AuthorCard key={author.id} authorObj={author} />
+            <AuthorCard key={author.id} authorObj={author} deleteAuthorAndBooks={deleteAuthorAndbooks} />
           ))}
         </div>
       </div>
