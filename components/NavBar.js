@@ -9,7 +9,6 @@ import {
 } from 'react-bootstrap';
 import { signOut } from '../utils/auth';
 import { useAuth } from '../utils/context/authContext';
-import SearchBar from './SearchBar';
 
 export default function NavBar() {
   const { user } = useAuth();
@@ -25,10 +24,10 @@ export default function NavBar() {
           <Nav className="me-auto" style={{ width: '100%' }}>
             {/* CLOSE NAVBAR ON LINK SELECTION: https://stackoverflow.com/questions/72813635/collapse-on-select-react-bootstrap-navbar-with-nextjs-not-working */}
             <Link passHref href="/">
-              <Nav.Link>Home</Nav.Link>
+              <Nav.Link>Shelf</Nav.Link>
             </Link>
             <Link passHref href={`/user/${user?.id}`}>
-              <Nav.Link>Bookshelf</Nav.Link>
+              <Nav.Link>Profile</Nav.Link>
             </Link>
             <Link passHref href="/library">
               <Nav.Link>Library</Nav.Link>
@@ -36,10 +35,6 @@ export default function NavBar() {
             <Link passHref href="/authors">
               <Nav.Link>Authors</Nav.Link>
             </Link>
-
-            <div className="ml-auto">
-              <SearchBar />
-            </div>
 
             <div className="ml-auto">
               {user.isAdmin && (

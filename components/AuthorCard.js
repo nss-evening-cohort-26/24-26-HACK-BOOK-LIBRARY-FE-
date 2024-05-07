@@ -8,7 +8,7 @@ import {
 import { getSingleAuthorAndBooks } from '../api/authorData';
 import { useAuth } from '../utils/context/authContext';
 
-export default function AuthorCard({ authorObj }) {
+export default function AuthorCard({ authorObj, deleteAuthorAndBooks }) {
   const [open, setOpen] = useState(false);
   const [data, setData] = useState({ books: [] });
   const { user } = useAuth();
@@ -28,8 +28,12 @@ export default function AuthorCard({ authorObj }) {
           <Link href={`/author/edit/${authorObj.id}`} passHref>
             <Button variant="info">Edit</Button>
           </Link>
-          <Button variant="danger" className="m-2">
-            Delete
+          <Button
+            variant="danger"
+            onClick={() => deleteAuthorAndBooks(authorObj)}
+            className="m-2"
+          >
+            Delete Author and Books
           </Button>
         </>
         )}
@@ -66,4 +70,5 @@ AuthorCard.propTypes = {
     name: PropTypes.string,
     books: PropTypes.string,
   }).isRequired,
+  deleteAuthorAndBooks: PropTypes.func.isRequired,
 };

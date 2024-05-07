@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useAuth } from '../utils/context/authContext';
 import { deleteComment } from '../api/commentData';
 
@@ -18,7 +19,12 @@ export default function CommentCard({ commentObj, onUpdate }) {
   };
   return (
     <Card>
-      <Card.Header>{commentObj.commentsUserName} posted on:  {new Date(commentObj.datePosted).toLocaleDateString()}</Card.Header>
+      <Card.Header>
+        <Link href={`/user/${commentObj.commentsUserId}`}>
+          {commentObj.commentsUserName}
+        </Link>
+        posted on:  {new Date(commentObj.datePosted).toLocaleDateString()}
+      </Card.Header>
       <Card.Body>
         <Card.Text>
           {commentObj.content}

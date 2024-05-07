@@ -14,8 +14,8 @@ const searchBooks = (input) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const searchAuthors = () => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/search/authors`, {
+const searchAuthors = (input) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/search/authors?query=${input}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
