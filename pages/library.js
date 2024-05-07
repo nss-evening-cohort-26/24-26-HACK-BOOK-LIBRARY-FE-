@@ -4,6 +4,7 @@ import Link from 'next/link';
 import BookCard from '../components/BookCard';
 import { deleteBook, getBooks } from '../api/bookData';
 import { useAuth } from '../utils/context/authContext';
+import SearchBar from '../components/SearchBar';
 
 export default function Library() {
   const { user } = useAuth();
@@ -26,6 +27,8 @@ export default function Library() {
 
   return (
     <>
+      <SearchBar location="library" />
+
       {user.isAdmin && (
       <Link href="/book/new/" passHref>
         <Button className="button">Add Book</Button>
