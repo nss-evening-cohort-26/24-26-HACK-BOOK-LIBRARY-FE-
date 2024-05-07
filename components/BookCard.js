@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -6,34 +6,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { addUserBook } from '../api/bookData';
 import { useAuth } from '../utils/context/authContext';
-import { getSingleAuthor } from '../api/authorData';
-import { getSingleGenre } from '../api/genreData';
 
 function BookCard({ bookObj, deleteBook, location }) {
-  const [author, setAuthor] = useState({});
-  const [genre, setGenre] = useState({});
   const [hover, setHover] = useState(false);
   const { user } = useAuth();
-
-  useEffect(() => {
-    const getAuthor = async () => {
-      if (bookObj.authorId) {
-        const authorData = await getSingleAuthor(bookObj.authorId);
-        setAuthor(authorData);
-      }
-    };
-
-    const getGenre = async () => {
-      if (bookObj.genreId) {
-        const genreData = await getSingleGenre(bookObj.genreId);
-        setGenre(genreData);
-      }
-    };
-
-    getAuthor();
-    getGenre();
-  }, [bookObj]);
-
+  console.log('Props in BookCard:', bookObj);
   const addThisBookToBookshelf = () => {
     window.alert('Book added to bookshelf!');
     const payload = {
@@ -95,10 +72,10 @@ function BookCard({ bookObj, deleteBook, location }) {
             marginTop: '20%',
           }}
         >
-          <h5>{bookObj.title} by</h5>
-          {author && <h5>{author.name}</h5>}
-          <h5>published in {bookObj.publishYear}</h5>
-          {genre && <h5>Genre: {genre.genreName}</h5>}
+          <Card.Title>{bookObj.title}</Card.Title>
+          <h5>by {bookObj.authorName}</h5>
+          <h5>Published in {bookObj.publishYear}</h5>
+          <h5>Genre: {bookObj.genreName}</h5>
           {user.isAdmin ? (
             <>
               <Card.Text>
@@ -155,6 +132,8 @@ BookCard.propTypes = {
     publishYear: PropTypes.number,
     authorId: PropTypes.number,
     genreId: PropTypes.number,
+    genreName: PropTypes.string,
+    authorName: PropTypes.string,
   }).isRequired,
   deleteBook: PropTypes.func.isRequired,
   location: PropTypes.string.isRequired,
