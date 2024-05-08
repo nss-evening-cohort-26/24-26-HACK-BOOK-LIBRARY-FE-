@@ -28,13 +28,22 @@ export default function ViewBook() {
   //   console.warn('delete book warn', book);
   // };
 
-  const getBookDetails = () => {
-    getSingleBookWithDetails(id).then(setBook);
-    getBooksComments(id).then(setBooksComments);
-    getAverageRating(id).then((rate) => {
-      setScore(rate);
-    });
-    checkIfUserRatingExists(id, user.id).then(setUserRating);
+  const getBookDetails = async () => {
+    try {
+      const bookDetails = await getSingleBookWithDetails(id);
+      setBook(bookDetails);
+
+      const comments = await getBooksComments(id);
+      setBooksComments(comments);
+
+      const averageRating = await getAverageRating(id);
+      setScore(averageRating);
+
+      const existingUserRating = await checkIfUserRatingExists(id, user.id);
+      setUserRating(existingUserRating);
+    } catch (error) {
+      console.error('Failed to fetch book details:', error);
+    }
   };
 
   const postBookRating = (newScore) => {
