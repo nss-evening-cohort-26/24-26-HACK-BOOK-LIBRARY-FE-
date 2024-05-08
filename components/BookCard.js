@@ -76,14 +76,16 @@ function BookCard({ bookObj, deleteBook, location }) {
           <h5>by {bookObj.authorName}</h5>
           <h5>Published in {bookObj.publishYear}</h5>
           <h5>Genre: {bookObj.genreName}</h5>
+          <Card.Text>
+            <Link href={`/book/${bookObj.id}`} passHref>
+              <Button variant="light" className="m-2">
+                <Image src="/assets/viewicon.png" alt="Edit" width={22} height={22} />
+              </Button>
+            </Link>
+          </Card.Text>
           {user.isAdmin ? (
             <>
               <Card.Text>
-                <Link href={`/book/${bookObj.id}`} passHref>
-                  <Button variant="light" className="m-2">
-                    <Image src="/assets/viewicon.png" alt="Edit" width={22} height={22} />
-                  </Button>
-                </Link>
                 <Link href={`/book/edit/${bookObj.id}`} passHref>
                   <Button variant="outline-dark" style={{ backgroundColor: 'black', color: 'white' }}>
                     <Image src="/assets/editicon.png" alt="Edit" width={22} height={22} />
