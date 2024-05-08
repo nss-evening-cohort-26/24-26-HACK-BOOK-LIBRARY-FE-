@@ -165,3 +165,7 @@ body {
   text-align: center;
 color: aliceblue;
 }
+.btn {
+  border-radius: 20px;
+  padding: 0.5rem 1.5rem;
+}

@@ -2,64 +2,64 @@
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import {
-  Button, Card, Collapse, Image,
-} from 'react-bootstrap';
+import { Button, Card, Image } from 'react-bootstrap';
 import { getSingleAuthorAndBooks } from '../api/authorData';
 import { useAuth } from '../utils/context/authContext';
 
 export default function AuthorCard({ authorObj, deleteAuthorAndBooks }) {
-  const [open, setOpen] = useState(false);
   const [data, setData] = useState({ books: [] });
   const { user } = useAuth();
 
   useEffect(() => {
-    getSingleAuthorAndBooks(authorObj.id).then((responseData) => {
-      setData(responseData);
-    });
+    getSingleAuthorAndBooks(authorObj.id).then(setData);
   }, [authorObj.id]);
 
   return (
-    <Card style={{ width: '18rem', margin: '10px' }}>
-      <Card.Body>
+    <Card
+      className="m-2"
+      style={{
+        width: '18rem',
+        height: '12rem',
+        backgroundColor: '#333',
+        color: 'white',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+      }}
+    >
+      <Card.Body className="text-center p-2">
         <Card.Title>{authorObj.name}</Card.Title>
-        {user.isAdmin && (
-        <>
+        <div className="d-flex justify-content-center mb-1">
+          {data.books.map((book) => (
+            <Link key={book.id} href={`/book/${book.id}`} passHref>
+              <Image
+                src={book.bookCover}
+                alt={book.title}
+                style={{
+                  width: '50px',
+                  height: '75px',
+                  margin: '3px',
+                  cursor: 'pointer',
+                }}
+              />
+            </Link>
+          ))}
+        </div>
+      </Card.Body>
+      {user.isAdmin && (
+        <div className="d-flex p-2">
           <Link href={`/author/edit/${authorObj.id}`} passHref>
-            <Button variant="info">Edit</Button>
+            <Button variant="info" style={{ flex: 1, marginRight: '3px' }}>Edit</Button>
           </Link>
           <Button
             variant="danger"
+            style={{ flex: 1, marginLeft: '3px' }}
             onClick={() => deleteAuthorAndBooks(authorObj)}
-            className="m-2"
           >
-            Delete Author and Books
+            Delete
           </Button>
-        </>
-        )}
-        <Button
-          className="bookBtn"
-          onClick={() => setOpen(!open)}
-          aria-controls="example-collapse-text"
-          aria-expanded={open}
-        >
-          Author's books
-        </Button>
-        <Collapse in={open}>
-          <div id="example-collapse-text">
-            {data.books.map((book) => (
-              <div key={book.id}>
-                <Link passHref href={`/book/${book.id}`}>
-                  <div style={{ cursor: 'pointer' }}>
-                    <Image src={book.bookCover} alt={book.title} style={{ width: '50px', height: 'auto' }} />
-                    {book.title}
-                  </div>
-                </Link>
-              </div>
-            ))}
-          </div>
-        </Collapse>
-      </Card.Body>
+        </div>
+      )}
     </Card>
   );
 }
