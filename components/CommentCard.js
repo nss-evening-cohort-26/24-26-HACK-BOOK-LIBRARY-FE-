@@ -23,7 +23,7 @@ export default function CommentCard({ commentObj, onUpdate }) {
         <Link href={`/user/${commentObj.commentsUserId}`}>
           {commentObj.commentsUserName}
         </Link>
-        posted on:  {new Date(commentObj.datePosted).toLocaleDateString()}
+        {' '}posted on:  {new Date(commentObj.datePosted).toLocaleDateString()}
       </Card.Header>
       <Card.Body>
         <Card.Text>
