@@ -3,7 +3,7 @@ import { Container } from 'react-bootstrap';
 import {
   Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button,
 } from '@mui/material';
-import { getAllUsers } from '../api/userData';
+import { getAllUsers, makeUserAdmin } from '../api/userData';
 import { useAuth } from '../utils/context/authContext';
 
 const AdminControlPanel = () => {
@@ -17,6 +17,21 @@ const AdminControlPanel = () => {
       console.error('Failed to fetch users:', error);
     });
   }, []);
+
+  const handleMakeAdmin = (userId) => {
+    makeUserAdmin(userId)
+      .then(() => {
+        setUsers((prevUsers) => prevUsers.map((u) => {
+          if (u.id === userId) {
+            return { ...u, isAdmin: true };
+          }
+          return u;
+        }));
+      })
+      .catch((error) => {
+        console.error('Failed to update admin status:', error);
+      });
+  };
 
   return (
     <Container className="mt-5">
@@ -66,6 +81,7 @@ const AdminControlPanel = () => {
                   <TableCell sx={{ fontWeight: 600 }}>
                     {!userItem.isAdmin && (
                       <Button
+                        onClick={() => handleMakeAdmin(userItem.id)}
                         variant="contained"
                         sx={{
                           fontWeight: 600,
