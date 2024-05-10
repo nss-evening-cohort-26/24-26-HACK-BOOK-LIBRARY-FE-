@@ -26,16 +26,19 @@ export default function Authors() {
 
   return (
     <>
+
       <SearchBar location="authors" />
 
       <div className="top-container">
         { user.isAdmin && (
-          <Link href="/author/new/" passHref>
-            <Button className="button">Add Author</Button>
-          </Link>
+          <div className="addAuthorBtnDiv">
+            <Link href="/author/new/" passHref>
+              <Button className="addAuthorButton">Add Author</Button>
+            </Link>
+          </div>
         )}
         <h1 className="text">Authors</h1>
-        <div className="d-flex flex-wrap">
+        <div className="d-flex flex-wrap authorCardDiv">
           {authors.map((author) => (
             <AuthorCard key={author.id} authorObj={author} deleteAuthorAndBooks={deleteAuthorAndbooks} />
           ))}
