@@ -14,7 +14,7 @@ export default function NavBar() {
   const { user } = useAuth();
 
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" style={{ opacity: '80%' }}>
       <Container>
         <Link passHref href="/">
           <Navbar.Brand className="logo">Boox</Navbar.Brand>
@@ -42,7 +42,7 @@ export default function NavBar() {
                 <Nav.Link>Admin</Nav.Link>
               </Link>
               )}
-              <Button variant="danger" onClick={signOut}>
+              <Button variant="danger" onClick={signOut} style={{ background: '#7B2D26', border: '1px solid #7B2D26' }}>
                 Sign Out
               </Button>
             </div>
