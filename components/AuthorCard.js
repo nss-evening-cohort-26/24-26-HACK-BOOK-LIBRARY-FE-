@@ -20,19 +20,26 @@ export default function AuthorCard({ authorObj, deleteAuthorAndBooks }) {
       style={{
         width: '18rem',
         height: '12rem',
-        backgroundColor: '#333',
+        backgroundColor: '#E7DFCE',
         color: 'white',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
+        boxShadow: '2px 2px 7px 1px rgba(17, 14, 14, 0.979)',
       }}
     >
       <Card.Body className="text-center p-2">
-        <Card.Title>{authorObj.name}</Card.Title>
+        <Card.Title style={{
+          backgroundColor: '#7B2D26',
+          borderRadius: '5px',
+        }}
+        >{authorObj.name}
+        </Card.Title>
         <div className="d-flex justify-content-center mb-1">
           {data.books.map((book) => (
             <Link key={book.id} href={`/book/${book.id}`} passHref>
               <Image
+                className="authorBookImg"
                 src={book.bookCover}
                 alt={book.title}
                 style={{
@@ -40,6 +47,7 @@ export default function AuthorCard({ authorObj, deleteAuthorAndBooks }) {
                   height: '75px',
                   margin: '3px',
                   cursor: 'pointer',
+                  boxShadow: '2px 2px 10px 1px rgba(17, 14, 14, 0.979)',
                 }}
               />
             </Link>
@@ -49,11 +57,11 @@ export default function AuthorCard({ authorObj, deleteAuthorAndBooks }) {
       {user.isAdmin && (
         <div className="d-flex p-2">
           <Link href={`/author/edit/${authorObj.id}`} passHref>
-            <Button variant="info" style={{ flex: 1, marginRight: '3px' }}>Edit</Button>
+            <Button variant="outline-dark" style={{ flex: 1, marginRight: '3px', fontWeight: '500' }}>Edit</Button>
           </Link>
           <Button
-            variant="danger"
-            style={{ flex: 1, marginLeft: '3px' }}
+            variant="outline-dark"
+            style={{ flex: 1, marginLeft: '3px', fontWeight: '500' }}
             onClick={() => deleteAuthorAndBooks(authorObj)}
           >
             Delete
