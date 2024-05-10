@@ -21,17 +21,28 @@ const AdminControlPanel = () => {
   return (
     <Container className="mt-5">
       {user && user.isAdmin ? (
-        <TableContainer component={Paper} sx={{ border: '5px solid black', borderRadius: '8px' }}>
+        <TableContainer
+          component={Paper}
+          sx={{
+            borderRadius: '15px',
+            overflow: 'hidden',
+            border: '3px solid black',
+            boxShadow: '0 2px 6px rgba(0,0,0,0.25)',
+          }}
+        >
           <Table sx={{ minWidth: 650 }} aria-label="customized table">
             <TableHead>
               <TableRow sx={{
-                backgroundColor: '#D7C9AA', color: '#000', fontWeight: 'bold', border: '2px solid black',
+                backgroundColor: '#D7C9AA',
+                color: '#000',
+                fontWeight: 600,
+                borderBottom: '2px solid black',
               }}
               >
-                <TableCell sx={{ color: 'black', border: '2px solid black', fontWeight: 'bold' }}>Username</TableCell>
-                <TableCell sx={{ color: 'black', border: '2px solid black', fontWeight: 'bold' }}>Email</TableCell>
-                <TableCell sx={{ color: 'black', border: '2px solid black', fontWeight: 'bold' }}>Admin</TableCell>
-                <TableCell sx={{ color: 'black', border: '2px solid black', fontWeight: 'bold' }}>Action</TableCell>
+                <TableCell sx={{ fontWeight: 600 }}>Username</TableCell>
+                <TableCell sx={{ fontWeight: 600 }}>Email</TableCell>
+                <TableCell sx={{ fontWeight: 600 }}>Admin</TableCell>
+                <TableCell sx={{ fontWeight: 600 }}>Action</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -41,18 +52,33 @@ const AdminControlPanel = () => {
                   sx={{
                     backgroundColor: index % 2 ? '#D7C9AA' : '#F2E5D7',
                     color: 'black',
-                    border: '2px solid black',
-                    fontWeight: '600',
+                    fontWeight: 600,
+                    height: '60px',
+                    '&:not(:last-child)': {
+                      borderBottom: '2px solid black',
+                    },
                   }}
                 >
-                  <TableCell component="th" scope="row" sx={{ border: '2px solid black', fontWeight: '600' }}>
+                  <TableCell component="th" scope="row" sx={{ fontWeight: 600 }}>
                     {userItem.userName}
                   </TableCell>
-                  <TableCell sx={{ border: '2px solid black', fontWeight: '600' }}>{userItem.email}</TableCell>
-                  <TableCell sx={{ border: '2px solid black', fontWeight: '600' }}>{userItem.isAdmin ? 'Yes' : 'No'}</TableCell>
-                  <TableCell sx={{ border: '2px solid black', fontWeight: '600' }}>
+                  <TableCell sx={{ fontWeight: 600 }}>{userItem.email}</TableCell>
+                  <TableCell sx={{ fontWeight: 600 }}>{userItem.isAdmin ? 'Yes' : 'No'}</TableCell>
+                  <TableCell sx={{ fontWeight: 600 }}>
                     {!userItem.isAdmin && (
-                      <Button variant="contained" color="success" sx={{ borderRadius: '50px' }}>
+                      <Button
+                        variant="outlined"
+                        sx={{
+                          fontWeight: 600,
+                          color: 'black',
+                          borderColor: 'black',
+                          '&:hover': {
+                            backgroundColor: 'green',
+                            color: '#FFFFFF',
+                            borderColor: 'green',
+                          },
+                        }}
+                      >
                         Make Admin
                       </Button>
                     )}
