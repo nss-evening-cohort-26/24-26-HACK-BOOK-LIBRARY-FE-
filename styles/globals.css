@@ -182,7 +182,7 @@ margin: 10px;
 
 .addAuthorButton:hover{
   background-color: #413a3a;
-    color: black;
+  color: rgb(255, 255, 255);
     border-color: #554848;
 }
 .addAuthorBtnDiv{
@@ -198,7 +198,7 @@ margin: 10px;
  #search{
   width: 400px;
   margin: auto;
-  margin-top: 15px;
+  margin-top: 30px;
   margin-bottom: 15px;
  }
 
@@ -206,3 +206,74 @@ margin: 10px;
   flex-wrap: wrap;
   justify-content: space-evenly;
  }
+
+ .libraryButtonDiv{
+  display: flex;
+  justify-content: center;
+ }
+
+ .libraryButton{
+  background-color: #0B7A75 ;
+border-color: #F0F3F5;
+border-width: 5px;
+justify-content: center;
+margin: 7px;
+margin-bottom: 25px;
+ }
+ .libraryButton:hover{
+  background-color: #413a3a;
+  color: rgb(255, 255, 255);
+    border-color: #554848;
+}
+
+ .libraryHeader{
+  font-size: larger !important;
+ }
+
+ .submitAuthorButton{
+  background-color: #0B7A75 ;
+  border-color: #F0F3F5;
+  border-width: 5px;
+  justify-content: center;
+  margin: 7px;
+  margin-bottom: 25px;
+  margin-top: 30px;
+ }
+
+ .submitAuthorButton:hover{
+  background-color: #413a3a;
+    color: rgb(255, 255, 255);
+    border-color: #554848;
+}
+
+ .submitButtonDiv{
+display: flex;
+justify-content: center;
+ }
+
+.bookForm{
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  border: #F0F3F5 4px solid;
+  background-color: #7B2D26;
+  border-radius: 50px;
+  padding: 40px;
+  margin: auto;
+  margin-top: 60px;
+  box-shadow: 4px 4px 10px 1px #0c282e;
+}
+
+.authorForm{
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  border: #F0F3F5 4px solid;
+  background-color: #7B2D26;
+  border-radius: 50px;
+  padding: 40px;
+  margin: auto;
+  margin-top: 60px;
+  box-shadow: 4px 4px 10px 1px #0c282e;
+  
+}
