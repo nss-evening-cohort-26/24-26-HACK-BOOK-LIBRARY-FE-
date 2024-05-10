@@ -37,7 +37,7 @@ export default function AuthorForm({ obj }) {
   };
 
   return (
-    <Form className="custom-form" onSubmit={handleSubmit}>
+    <Form className="authorForm" onSubmit={handleSubmit}>
       <h3 className="text">{obj.id ? 'Update' : 'Create'} Author</h3>
 
       <Form.Group controlId="validationCustom01">
@@ -51,7 +51,9 @@ export default function AuthorForm({ obj }) {
           onChange={handleChange}
         />
       </Form.Group>
-      <Button className="form-button button" type="submit">{obj.id ? 'Update' : 'Create'} Author</Button>
+      <div className="submitButtonDiv">
+        <Button className="form-button button submitAuthorButton" type="submit">{obj.id ? 'Update' : 'Create'} Author</Button>
+      </div>
     </Form>
   );
 }

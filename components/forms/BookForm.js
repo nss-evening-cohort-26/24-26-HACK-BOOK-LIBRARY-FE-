@@ -53,7 +53,7 @@ export default function BookForm({ obj }) {
   };
 
   return (
-    <Form className="custom-form" onSubmit={handleSubmit}>
+    <Form className=" bookForm" onSubmit={handleSubmit}>
       <h3 className="text">{obj.id ? 'Update' : 'Create'} Book</h3>
 
       <Form.Group controlId="validationCustom01">
@@ -139,7 +139,9 @@ export default function BookForm({ obj }) {
         }
         </Form.Select>
       </Form.Group>
-      <Button className="form-button button" type="submit">{obj.id ? 'Update' : 'Create'} Book</Button>
+      <div className="submitButtonDiv">
+        <Button className="submitAuthorButton" type="submit">{obj.id ? 'Update' : 'Create'} Book</Button>
+      </div>
     </Form>
   );
 }
