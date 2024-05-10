@@ -52,7 +52,7 @@ function UserCard({ userObj }) {
               />
             </Card.Text>
             <Card.Text>
-              Bio: <input
+              Bio: <textarea
                 type="text"
                 name="bio"
                 value={tempUser?.bio || ''}
@@ -63,7 +63,7 @@ function UserCard({ userObj }) {
             </Card.Text>
           </div>
           {editMode && (
-          <Button onClick={updatedProfile}>Save</Button>
+          <Button onClick={updatedProfile} className="addAuthorButton">Save</Button>
           )}
         </Card.Body>
       </Card>
