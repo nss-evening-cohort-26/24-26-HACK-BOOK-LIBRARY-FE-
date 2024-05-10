@@ -23,10 +23,8 @@ function ViewUserProfiles() {
             <h1>{profile.userName} </h1>
             <UserCard userObj={profile} />
           </div>
-          <div className="shelf-items">
-            <div className="user-review text">
-              {" other user's ratings of books"}
-            </div>
+          <div className="shelf-items text">
+            { `${profile.userName}'s Bookshelf` }
             <div className="users-shelf">
               <UserBookshelves user={profile} />
             </div>
@@ -42,10 +40,10 @@ function ViewUserProfiles() {
           <h1>{profile.userName} </h1>
           <UserCard userObj={profile} />
         </div>
-        <div className="shelf-items">
-          <div className="user-review">
-            My reviews
-          </div>
+        <div className="shelf-items text">
+          <h3>
+            { `${profile.userName}'s Bookshelf` }
+          </h3>
           <div className="users-shelf">
             <UserBookshelves user={profile} />
           </div>

@@ -17,7 +17,7 @@ export default function UserBookshelves({ user }) {
         <Card
           key={book.id}
           style={{
-            border: '1px solid', backgroundColor: 'rgb(29, 27, 27)', margin: '5px', display: 'flex', alignItems: 'center',
+            border: '1px solid', backgroundColor: '#e0c4a3f8', margin: '5px', display: 'flex', alignItems: 'center', boxShadow: '2px 2px 7px 1px rgba(17, 14, 14, 0.979)',
           }}
         >
           <Link passHref href={`/book/${book.id}`}>
@@ -29,7 +29,7 @@ export default function UserBookshelves({ user }) {
                 src={book.bookCover}
                 alt={book.title}
               />
-              <Card.Body className="text">
+              <Card.Body className="bookshelf-profile-card-text">
                 {book.title}
               </Card.Body>
             </div>

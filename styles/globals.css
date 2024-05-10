@@ -37,9 +37,12 @@ body {
 }
 
 .user-card {
-  background-color: black;
-  color: grey;
+  background-color: #e0c4a3f8;
+  font-size: large;
   border-color: grey;
+  padding: 5px;
+  box-shadow: 2px 2px 7px 1px rgba(17, 14, 14, 0.979);
+
 }
 
 .custom-form{
@@ -137,12 +140,12 @@ body {
 }
 
 .profile-info {
-  text-align: center;
+  text-align: left;
   padding: 5px;
-  max-width: 400px;
+  max-width: 50%;
+  min-width: 50%;
   margin: 5px;
   color: whitesmoke;
-  border: 1px solid #fcfcfc;/* check for removal*/
 }
 
 .profile-shelf {
@@ -154,12 +157,12 @@ body {
 
 .shelf-items {
   display: flex;
-  flex-direction: column; /* Arrange items in a column */
+  flex-direction: column;
 }
 
 .users-shelf {
   display: flex;
-  flex-wrap: wrap; /* Allow items to wrap to the next row */
+  flex-wrap: wrap;
 }
 
 .user-review {
