@@ -27,7 +27,6 @@ const AdminControlPanel = () => {
             borderRadius: '15px',
             overflow: 'hidden',
             border: '3px solid black',
-            boxShadow: '0 2px 6px rgba(0,0,0,0.25)',
           }}
         >
           <Table sx={{ minWidth: 650 }} aria-label="customized table">
@@ -53,7 +52,7 @@ const AdminControlPanel = () => {
                     backgroundColor: index % 2 ? '#D7C9AA' : '#F2E5D7',
                     color: 'black',
                     fontWeight: 600,
-                    height: '60px',
+                    height: '75px',
                     '&:not(:last-child)': {
                       borderBottom: '2px solid black',
                     },
@@ -67,15 +66,19 @@ const AdminControlPanel = () => {
                   <TableCell sx={{ fontWeight: 600 }}>
                     {!userItem.isAdmin && (
                       <Button
-                        variant="outlined"
+                        variant="contained"
                         sx={{
                           fontWeight: 600,
-                          color: 'black',
-                          borderColor: 'black',
+                          backgroundColor: 'green',
+                          color: '#FFFFFF',
+                          borderColor: 'white',
+                          borderWidth: '5px',
+                          borderStyle: 'solid',
+                          borderRadius: '50px',
+                          textTransform: 'none',
                           '&:hover': {
-                            backgroundColor: 'green',
-                            color: '#FFFFFF',
-                            borderColor: 'green',
+                            backgroundColor: 'darkgreen',
+                            borderColor: 'white',
                           },
                         }}
                       >
