@@ -48,10 +48,10 @@ export default function Library() {
     <>
       <SearchBar location="library" />
 
-      <Button onClick={toggleSortType}>Sort by {sortType === 'title' ? 'Rating' : 'Title'}</Button>
+      <Button className="ratingSortButton" onClick={toggleSortType}>Sort by {sortType === 'title' ? 'Rating' : 'Title'}</Button>
       {user.isAdmin && (
       <Link href="/book/new/" passHref>
-        <Button className="button">Add Book</Button>
+        <Button className="addBookButton">Add Book</Button>
       </Link>
       )}
       <h4 className="text">Be quite in the god damn Library!</h4>
