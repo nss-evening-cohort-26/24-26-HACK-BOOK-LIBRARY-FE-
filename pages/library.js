@@ -47,13 +47,14 @@ export default function Library() {
   return (
     <>
       <SearchBar location="library" />
-
-      <Button onClick={toggleSortType}>Sort by {sortType === 'title' ? 'Rating' : 'Title'}</Button>
-      {user.isAdmin && (
-      <Link href="/book/new/" passHref>
-        <Button className="button">Add Book</Button>
-      </Link>
-      )}
+      <div className="libraryButtonDiv">
+        <Button className="libraryButton" onClick={toggleSortType}>Sort by {sortType === 'title' ? 'Rating' : 'Title'}</Button>
+        {user.isAdmin && (
+        <Link href="/book/new/" passHref>
+          <Button className="libraryButton">Add Book</Button>
+        </Link>
+        )}
+      </div>
       <h4 className="text">Be quite in the god damn Library!</h4>
       <div className="d-flex flex-wrap">
         {books.map((book) => (
