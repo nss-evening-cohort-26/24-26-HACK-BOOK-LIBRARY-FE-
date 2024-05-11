@@ -108,7 +108,7 @@ const AdminControlPanel = () => {
           </Table>
         </TableContainer>
       ) : (
-        <div>You do not have access to this panel.</div>
+        <div>You do not have access to this panel</div>
       )}
     </Container>
   );
