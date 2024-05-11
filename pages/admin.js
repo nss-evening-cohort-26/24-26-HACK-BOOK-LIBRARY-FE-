@@ -3,7 +3,7 @@ import { Container } from 'react-bootstrap';
 import {
   Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button,
 } from '@mui/material';
-import { getAllUsers } from '../api/userData';
+import { getAllUsers, makeUserAdmin } from '../api/userData';
 import { useAuth } from '../utils/context/authContext';
 
 const AdminControlPanel = () => {
@@ -17,6 +17,21 @@ const AdminControlPanel = () => {
       console.error('Failed to fetch users:', error);
     });
   }, []);
+
+  const handleMakeAdmin = (userId) => {
+    makeUserAdmin(userId)
+      .then(() => {
+        setUsers((prevUsers) => prevUsers.map((u) => {
+          if (u.id === userId) {
+            return { ...u, isAdmin: true };
+          }
+          return u;
+        }));
+      })
+      .catch((error) => {
+        console.error('Failed to update admin status:', error);
+      });
+  };
 
   return (
     <Container className="mt-5">
@@ -35,7 +50,7 @@ const AdminControlPanel = () => {
                 backgroundColor: '#D7C9AA',
                 color: '#000',
                 fontWeight: 600,
-                borderBottom: '2px solid black',
+                borderBottom: '3px solid black',
               }}
               >
                 <TableCell sx={{ fontWeight: 600 }}>Username</TableCell>
@@ -66,19 +81,20 @@ const AdminControlPanel = () => {
                   <TableCell sx={{ fontWeight: 600 }}>
                     {!userItem.isAdmin && (
                       <Button
+                        onClick={() => handleMakeAdmin(userItem.id)}
                         variant="contained"
                         sx={{
                           fontWeight: 600,
                           backgroundColor: 'green',
                           color: '#FFFFFF',
-                          borderColor: 'white',
+                          borderColor: 'gray',
                           borderWidth: '5px',
                           borderStyle: 'solid',
                           borderRadius: '50px',
                           textTransform: 'none',
                           '&:hover': {
                             backgroundColor: 'darkgreen',
-                            borderColor: 'white',
+                            borderColor: 'gray',
                           },
                         }}
                       >
