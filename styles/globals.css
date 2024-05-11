@@ -85,21 +85,32 @@ body {
 #edit-user {
   align-content: center;
 }
+
 .box {
+  margin: auto;
+  margin-top: 5rem;
   display: flex;
+  box-shadow: 2px 2px 10px 1px rgba(17, 14, 14, 0.979);
+  border-radius: 10px;
+  border-color: #7B2D26;
+  max-width: fit-content
 }
 
 .info-box {
   display: flex;
+  max-width: 30rem;
 }
 
 .card-display {
   flex: 1;
   display: flex;
   flex-direction: column;
-  background-color: #413a3a;
+  background-color: #D7C9AA;
   padding: 10px;
-  border: 1px solid #fcfcfc;
+  border-color: #7B2D26;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  max-width: 30rem;
 }
 
 .image-container {
@@ -113,7 +124,7 @@ body {
 }
 
 .info-container {
-  color: #fcfcfc;
+  color: #7B2D26;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -125,7 +136,7 @@ body {
 }
 
 .rate-box {
-  color: #fcfcfc;
+  color: #7B2D26;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -134,9 +145,24 @@ body {
 
 .comment-display {
   flex: 2;
-  background-color: #554848;
+  background-color: #D7C9AA;
   padding: 20px;
-  border: 1px solid #fcfcfc;
+  border-left: 1px solid #7B2D26;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  max-width: 40rem;
+}
+
+.comment-card {
+  margin-bottom: 1rem;
+  background-color: #F0F3F5;
+  border-color: #7B2D26;
+  box-shadow: 2px 2px 10px 1px rgba(17, 14, 14, 0.979);
+  max-width: contain;
+}
+
+#comment-card-header {
+  border-bottom-color: #7B2D26;
 }
 
 .profile-info {
