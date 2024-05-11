@@ -18,8 +18,8 @@ export default function CommentCard({ commentObj, onUpdate }) {
     }
   };
   return (
-    <Card>
-      <Card.Header>
+    <Card className="comment-card">
+      <Card.Header id="comment-card-header">
         <Link href={`/user/${commentObj.commentsUserId}`}>
           {commentObj.commentsUserName}
         </Link>

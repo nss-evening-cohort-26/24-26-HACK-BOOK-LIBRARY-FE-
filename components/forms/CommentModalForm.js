@@ -56,10 +56,11 @@ function CommentModalForm({ commentObj, onUpdate }) {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        Add Comment
-      </Button>
-
+      <div style={{ textAlign: 'center' }}>
+        <Button variant="outline-dark" onClick={handleShow}>
+          Add Comment
+        </Button>
+      </div>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Enter your comment</Modal.Title>

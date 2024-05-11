@@ -77,8 +77,15 @@ export default function ViewBook() {
           <div className="image-container">
             <Image src={book.bookCover} />
           </div>
-          <div className="info-container">{/* code realted to author, Pubyear, genre, and total rating go in this div */}
-            <p>Author: {book.name}</p>
+          <div className="info-container" style={{ textAlign: 'center' }}>{/* code realted to author, Pubyear, genre, and total rating go in this div */}
+            <h6 style={{
+              backgroundColor: '#7B2D26',
+              textAlign: 'center',
+              color: '#F0F3F5',
+            }}
+            >{book.title}
+            </h6>
+
             <p>Genre: {book.genreName} </p>
             <p>Year Published: {book.publishYear}</p>
             <p>Overall Rating: <Rating
