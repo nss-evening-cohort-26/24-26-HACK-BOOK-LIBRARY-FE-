@@ -55,7 +55,7 @@ export default function Library() {
         </Link>
         )}
       </div>
-      <h4 className="text">Be quite in the god damn Library!</h4>
+      <h4 className="text">Silence in the Library!</h4>
       <div className="d-flex flex-wrap">
         {books.map((book) => (
           <BookCard key={book.id} bookObj={book} onUpdate={fetchAndSortBooks} deleteBook={deleteThisLibraryBook} location="library" />
